@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Omar's UAT Space Page</title>
+    <script src="countDownCode.js"></script>
+    <script src="buttonCode.js"></script>
+    <script src="Craps.js"></script>
+    <link rel="stylesheet" href="BlastoffStyle.css">
+    <script src="countDownCode.js"></script>
+</head>
+
+<body>
+    <table>
+        <td>
+            <img src="UATspaceLogo.jpg" alt="Space Logo">
+        </td>
+        <td>
+            <h1>UAT Space Program</h1>
+        </td>
+    </table>
+
+    <script>document.write("Test of the document write function");</script>
+    <p>Test of the paragraph tags</p>
+
+    <br>
+    <br>
+    <br>
+    <div id="countDownRes">blastoff notification</div>
+
+    <br>
+    <button onclick="start();countDown();"class="button" id="startButton">Start</button> 
+    <button onclick="stop();" class="button" id="stopButton">Stop</button>
+    <br>
+    <br>
+    <h2 id = "blink">Let's Play Craps</h2>
+    <br>
+    <div id="crapsRes">Craps results</div>
+    <div id="die1Res">die1 results</div>
+    <div id="die2Res">die2 results</div>
+    <div id="sumRes">sum results</div>
+    <button onclick="startCraps();" class="button">Play Craps</button>
+
+    <script type="text/javascript">
+        var blink = document.getElementById('blink');
+        setInterval(function() {
+            blink.style.opacity = (blink.style.opacity == 0 ? 1 : 0);
+        }, 1500);
+        
+    </script>
+</body>
+
+</html>
