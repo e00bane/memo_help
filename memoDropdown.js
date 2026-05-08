@@ -16,11 +16,19 @@ const CONTACT_CONTEXT_LISTS = {
 }
 
 
+function getDefaultDDElement() {
+    const element = document.createElement('option');
+    element.value = '';
+    element.text = 'choose an option';
+    return element;
+}
+
+
 function populateDropdown() {
     const dropdown = document.getElementById('memoDropdown');
     dropdown.innerHTML = ''; // Clear existing options
 
-
+    dropdown.appendChild(getDefaultDDElement());
     for (const [contactKey, contactText] of Object.entries(CONTACT_TEXTS)) {
         const option = document.createElement('option');
         option.value = contactKey;
@@ -34,3 +42,19 @@ function populateDropdown() {
         populateContextDropdown(selectedContact);
     });
 }
+
+// Minimal stubs so change handler won't throw if those dropdowns aren't implemented yet.
+function populateEventDropdown(contactKey) {
+    // Optional: implement event dropdown population. Left as a safe no-op for now.
+}
+
+function populateContextDropdown(contactKey) {
+    // Optional: implement context dropdown population. Left as a safe no-op for now.
+}
+
+document.addEventListener('DOMContentLoaded', populateDropdown);
+document.addEventListener('change', (e) => {
+if (e.target && e.target.id === 'memoDropdown') {
+    console.log('selected', e.target.value);
+}
+});
