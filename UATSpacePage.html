@@ -1,63 +1,98 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-    <title>Omar's UAT Space Page</title>
-    <script src="countDownCode.js"></script>
-    <script src="buttonCode.js"></script>
-    <script src="Craps.js"></script>
-    <link rel="stylesheet" href="BlastoffStyle.css">
-    <script src="countDownCode.js"></script>
-    <script src="memoDropdown.js"></script>
-    
-</head>
-
-<body>
-    <table>
-        <td>
-            <img src="UATspaceLogo.jpg" alt="Space Logo">
-        </td>
-        <td>
-            <h1>UAT Space Program</h1>
-        </td>
-    </table>
-
-    <!-- dropdown menu -->
-    <select id="memoDropdown">
-        <option value="option1">choose an option</option>
-    </select>
-        <select id="EventDropdown">
-        <option value="option1">choose an option</option>
-    </select>
-
-    <script>document.write("Test of the document write function");</script>
-    <p>Test of the paragraph tags</p>
-
-    <br>
-    <br>
-    <br>
-    <div id="countDownRes">blastoff notification</div>
-
-    <br>
-    <button onclick="start();countDown();"class="button" id="startButton">Start</button> 
-    <button onclick="stop();" class="button" id="stopButton">Stop</button>
-    <br>
-    <br>
-    <h2 id = "blink">Let's Play Craps</h2>
-    <br>
-    <div id="crapsRes">Craps results</div>
-    <div id="die1Res">die1 results</div>
-    <div id="die2Res">die2 results</div>
-    <div id="sumRes">sum results</div>
-    <button onclick="startCraps();" class="button">Play Craps</button>
-
-    <script type="text/javascript">
-        var blink = document.getElementById('blink');
-        setInterval(function() {
-            blink.style.opacity = (blink.style.opacity == 0 ? 1 : 0);
-        }, 1500);
+    <head>
+        <title>Omar's UAT Space Page</title>
+        <script src="countDownCode.js"></script>
+        <script src="buttonCode.js"></script>
+        <script src="Craps.js"></script>
+        <link rel="stylesheet" href="BlastoffStyle.css">
+        <script src="countDownCode.js"></script>
+        <script src="memoDropdown.js"></script>
+        <script src="memoText.js"></script>
         
-    </script>
-</body>
+    </head>
+
+    <body>
+        <table>
+            <td>
+                <img src="UATspaceLogo.jpg" alt="Space Logo">
+            </td>
+            <td>
+                <h1>UAT Space Program</h1>
+            </td>
+            <tr>
+                <td id="MemoText" row>
+                    Memo Text
+                </td>
+            </tr>
+            
+            <tr>
+                <td>
+                    <select id="CallDropdown" class="MemoDropdown">
+                        <option value="option1"></option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <select id="ContactDropdown" class="MemoDropdown">
+                        <option value="option1"></option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <select id="EventDropdown" class="MemoDropdown">
+                        <option value="option1"></option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <select id="ContextDropdown" class="MemoDropdown">
+                        <option value="option1"></option>
+                    </select>
+                </td>
+            </tr>
+            
+        </table>
+
+
+
+        <!-- dropdown menu -->
+
+
+        <button onclick="copyMemoText();" class="button" id="copyButton">Copy Memo Text</button>
+
+
+        <script>document.write("Test of the document write function");</script>
+        <p>Test of the paragraph tags</p>
+
+        <br>
+        <br>
+        <br>
+        <div id="countDownRes">blastoff notification</div>
+
+        <br>
+        <button onclick="start();countDown();"class="button" id="startButton">Start</button> 
+        <button onclick="stop();" class="button" id="stopButton">Stop</button>
+        <br>
+        <br>
+        <h2 id = "blink">Let's Play Craps</h2>
+        <br>
+        <div id="crapsRes">Craps results</div>
+        <div id="die1Res">die1 results</div>
+        <div id="die2Res">die2 results</div>
+        <div id="sumRes">sum results</div>
+        <button onclick="startCraps();" class="button">Play Craps</button>
+
+        <script type="text/javascript">
+            var blink = document.getElementById('blink');
+            setInterval(function() {
+                blink.style.opacity = (blink.style.opacity == 0 ? 1 : 0);
+            }, 1500);
+            
+        </script>
+    </body>
 
 </html>
