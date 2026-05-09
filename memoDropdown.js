@@ -1,5 +1,5 @@
 const CONTACT_TEXTS = {0: 'CM', 1: 'NC', 2: 'SPS', 3: 'TP', 4: 'VM'};
-const EVENT_TEXTS = {0: 'DISC', 1: 'XFR', 2: 'NA', 3: 'SIT', 4: 'INCOMPLETE', 5: 'LM', 6: 'NML'};
+const EVENT_TEXTS = {0: 'DISC', 1: 'XFR', 2: 'NA', 3: 'SIT', 4: 'INCOMPLETE', 5: 'LM', 6: 'NML', 7: 'VMF', 8: 'VMNSU'};
 const CONTEXT_TEXTS = {0: 'CC', 1: 'RELATIVE', 2: 'WRONG#'};
 const CALL_TEXTS = {0: 'H1', 1: 'H2', 2: 'O1', 3: 'O2', 4: 'W1', 5: 'W2'};
 
@@ -8,7 +8,7 @@ const CONTACT_EVENT_LISTS = {
     1 : [2, 3, 4],
     2 : [0, 1, 5, 6],
     3 : [5, 6],
-    4 : [0, 2, 4]
+    4 : [5, 6, 7, 8]  // VM
 }
 
 const CONTACT_CONTEXT_LISTS = {
