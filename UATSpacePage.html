@@ -13,6 +13,7 @@
         
     </head>
 
+
     <body>
         <table>
             <td>
@@ -26,18 +27,10 @@
                     Memo Text
                 </td>
             </tr>
-            
-            <tr>
-                <td>
-                    <select id="CallDropdown" class="MemoDropdown">
-                        <option value="option1"></option>
-                    </select>
-                </td>
-            </tr>
             <tr>
                 <td>
                     <select id="ContactDropdown" class="MemoDropdown">
-                        <option value="option1"></option>
+                        <option value="option"></option>
                     </select>
                 </td>
             </tr>
@@ -63,7 +56,12 @@
         <!-- dropdown menu -->
 
 
-        <button onclick="copyMemoText();" class="button" id="copyButton">Copy Memo Text</button>
+        <button onclick="h1CopyMemoText();" class="button" id="h1CopyButton">H1</button>
+        <button onclick="h2CopyMemoText();" class="button" id="h2CopyButton">H2</button>
+        <button onclick="o1CopyMemoText();" class="button" id="o1CopyButton">O1</button>
+        <button onclick="o2CopyMemoText();" class="button" id="o2CopyButton">O2</button>
+        <button onclick="w1CopyMemoText();" class="button" id="w1CopyButton">W1</button>
+        <button onclick="w2CopyMemoText();" class="button" id="w2CopyButton">W2</button>
 
 
         <script>document.write("Test of the document write function");</script>

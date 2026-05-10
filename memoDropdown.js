@@ -98,4 +98,4 @@ function populateCallDropdown() {
 
 // Initialize the dropdowns when the DOM is fully loaded
 document.addEventListener('DOMContentLoaded', populateContactDropdown);
-document.addEventListener('DOMContentLoaded', populateCallDropdown);
+// document.addEventListener('DOMContentLoaded', populateCallDropdown);
