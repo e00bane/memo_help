@@ -96,6 +96,17 @@ function populateCallDropdown() {
     }
 }
 
-// Initialize the dropdowns when the DOM is fully loaded
-document.addEventListener('DOMContentLoaded', populateContactDropdown);
-// document.addEventListener('DOMContentLoaded', populateCallDropdown);
+function initializeDropdown(dropdownId) {
+        const dropdown = document.getElementById(dropdownId);
+        dropdown.innerHTML = ''; // Clear existing options
+
+        // populate with default options
+        dropdown.appendChild(getDefaultDDElement());
+}
+
+function initializeDropdowns() {
+    populateContactDropdown();
+    
+    initializeDropdown('EventDropdown');
+    initializeDropdown('ContextDropdown');
+}

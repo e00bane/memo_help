@@ -13,11 +13,3 @@ function updateMemoText() {
     
     memoTextElement.innerHTML = combinedText;  // applying changes to the memo text element
 }
-
-
-
-document.addEventListener('change', (e) => {
-    if (e.target && ['ContactDropdown', 'EventDropdown', 'ContextDropdown', 'CallDropdown'].includes(e.target.id)) {
-        updateMemoText();
-    }
-});
