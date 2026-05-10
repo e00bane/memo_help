@@ -23,41 +23,32 @@
                     Memo Text
                 </td>
             </tr>
+        </table>
+
+        <table id="dropdownTbl">
             <tr>
-                <td>
-                    <select id="ContactDropdown" class="MemoDropdown">
-                        <option value="option"></option>
-                    </select>
-                </td>
+                <td><select id="ContactDropdown" class="MemoDropdown"></select></td>
+                <td><select id="EventDropdown" class="MemoDropdown"></select></td>
+                <td><select id="ContextDropdown" class="MemoDropdown"></select></td>
             </tr>
-            <tr>
-                <td>
-                    <select id="EventDropdown" class="MemoDropdown">
-                        <option value="option1"></option>
-                    </select>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <select id="ContextDropdown" class="MemoDropdown">
-                        <option value="option1"></option>
-                    </select>
-                </td>
-            </tr>
-            
         </table>
 
 
 
         <!-- dropdown menu -->
 
-
-        <button onclick="h1CopyMemoText();" class="button" id="h1CopyButton">H1</button>
-        <button onclick="h2CopyMemoText();" class="button" id="h2CopyButton">H2</button>
-        <button onclick="o1CopyMemoText();" class="button" id="o1CopyButton">O1</button>
-        <button onclick="o2CopyMemoText();" class="button" id="o2CopyButton">O2</button>
-        <button onclick="w1CopyMemoText();" class="button" id="w1CopyButton">W1</button>
-        <button onclick="w2CopyMemoText();" class="button" id="w2CopyButton">W2</button>
+        <table id="memoButtonsTbl">
+            <tr>
+                <td><button onclick="h1CopyMemoText();" class="button" id="h1CopyButton">H1</button></td>
+                <td><button onclick="o1CopyMemoText();" class="button" id="o1CopyButton">O1</button></td>
+                <td><button onclick="w1CopyMemoText();" class="button" id="w1CopyButton">W1</button></td>
+            </tr>
+            <tr>
+                <td><button onclick="h2CopyMemoText();" class="button" id="h2CopyButton">H2</button></td>
+                <td><button onclick="o2CopyMemoText();" class="button" id="o2CopyButton">O2</button></td>
+                <td><button onclick="w2CopyMemoText();" class="button" id="w2CopyButton">W2</button></td>
+            </tr>
+        </table>
 
 
         <h2 id = "blink">Let's Play Craps</h2>
