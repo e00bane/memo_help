@@ -40,28 +40,11 @@ async function copyMemoText(callpoint_btn_element) {
 }
 
 
-// specific copy functions for each button
-function h1CopyMemoText() {
-    const callpointBtn = document.getElementById('h1CopyButton');
-    copyMemoText(callpointBtn);
-}
-function h2CopyMemoText() {
-    const callpointBtn = document.getElementById('h2CopyButton');
-    copyMemoText(callpointBtn);
-}
-function o1CopyMemoText() {
-    const callpointBtn = document.getElementById('o1CopyButton');
-    copyMemoText(callpointBtn);
-}
-function o2CopyMemoText() {
-    const callpointBtn = document.getElementById('o2CopyButton');
-    copyMemoText(callpointBtn);
-}
-function w1CopyMemoText() {
-    const callpointBtn = document.getElementById('w1CopyButton');
-    copyMemoText(callpointBtn);
-}
-function w2CopyMemoText() {
-    const callpointBtn = document.getElementById('w2CopyButton');
-    copyMemoText(callpointBtn);
+function handleCopyButtonClick(buttonId) {
+    const callpointBtn = document.getElementById(buttonId);
+    if (callpointBtn) {
+        copyMemoText(callpointBtn);
+    } else {
+        console.warn(`Button with ID ${buttonId} not found.`);
+    }
 }
