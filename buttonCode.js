@@ -45,3 +45,5 @@ async function copyMemoText() {
         }
     }
 }
+
+// specific copy functions for each button
