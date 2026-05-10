@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Omar's Workplace Memo Helper</title>
+        <script src="buttonCtrl.js"></script>
+        <script src="Craps.js"></script>
+        <script src="memoDropdown.js"></script>
+        <script src="memoText.js"></script>
+        <link rel="stylesheet" href="MemoHelperStyle.css">
+    </head>
+
+
+    <body>
+        <table>
+            <td>
+                <img src="https://www.clipartmax.com/png/small/4-40964_man-computer-clipart-work-working-office-workplace-work-desk-icon.png" alt="Man Computer Clipart Work Working Office Workplace - Work Desk Icon @clipartmax.com">
+            </td>
+            <td>
+                <h1>Workplace Memo Helper</h1>
+            </td>
+            <tr>
+                <td id="MemoText" row>
+                    Memo Text
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <select id="ContactDropdown" class="MemoDropdown">
+                        <option value="option"></option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <select id="EventDropdown" class="MemoDropdown">
+                        <option value="option1"></option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <select id="ContextDropdown" class="MemoDropdown">
+                        <option value="option1"></option>
+                    </select>
+                </td>
+            </tr>
+            
+        </table>
+
+
+
+        <!-- dropdown menu -->
+
+
+        <button onclick="h1CopyMemoText();" class="button" id="h1CopyButton">H1</button>
+        <button onclick="h2CopyMemoText();" class="button" id="h2CopyButton">H2</button>
+        <button onclick="o1CopyMemoText();" class="button" id="o1CopyButton">O1</button>
+        <button onclick="o2CopyMemoText();" class="button" id="o2CopyButton">O2</button>
+        <button onclick="w1CopyMemoText();" class="button" id="w1CopyButton">W1</button>
+        <button onclick="w2CopyMemoText();" class="button" id="w2CopyButton">W2</button>
+
+
+        <h2 id = "blink">Let's Play Craps</h2>
+        <br>
+        <div id="crapsRes">Craps results</div>
+        <div id="die1Res">die1 results</div>
+        <div id="die2Res">die2 results</div>
+        <div id="sumRes">sum results</div>
+        <button onclick="startCraps();" class="button">Play Craps</button>
+
+        <script type="text/javascript">
+            var blink = document.getElementById('blink');
+            setInterval(function() {
+                blink.style.opacity = (blink.style.opacity == 0 ? 1 : 0);
+            }, 1500);
+            
+        </script>
+    </body>
+
+</html>
