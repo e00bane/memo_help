@@ -15,7 +15,6 @@ function updateMemoText() {
 }
 
 
-
 document.addEventListener('change', (e) => {
     if (e.target && ['ContactDropdown', 'EventDropdown', 'ContextDropdown', 'CallDropdown'].includes(e.target.id)) {
         updateMemoText();

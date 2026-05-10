@@ -7,6 +7,11 @@
         <script src="memoDropdown.js"></script>
         <script src="memoText.js"></script>
         <link rel="stylesheet" href="MemoHelperStyle.css">
+
+        <script>
+            // Initialize the dropdowns when the DOM is fully loaded
+            document.addEventListener('DOMContentLoaded', initializeDropdowns);
+        </script>
     </head>
 
     <body>
@@ -32,9 +37,6 @@
         </table>
 
 
-
-        <!-- dropdown menu -->
-
         <table id="memoButtonsTbl">
             <tr>
                 <td><button onclick="h1CopyMemoText();" class="button" id="h1CopyButton">H1</button></td>
@@ -48,22 +50,24 @@
             </tr>
         </table>
 
-
-        <h2 id = "blink">Let's Play Craps</h2>
         <br>
-        <div id="crapsRes">Craps results</div>
-        <div id="die1Res">die1 results</div>
-        <div id="die2Res">die2 results</div>
-        <div id="sumRes">sum results</div>
-        <button onclick="startCraps();" class="button">Play Craps</button>
+        <span id="crapsGame">
+            <h2 id = "blink">Let's Play Craps</h2>
+            <br>
+            <div id="crapsRes">Craps results</div>
+            <div id="die1Res">die1 results</div>
+            <div id="die2Res">die2 results</div>
+            <div id="sumRes">sum results</div>
+            <button onclick="startCraps();" class="button">Play Craps</button>
 
-        <script type="text/javascript">
-            var blink = document.getElementById('blink');
-            setInterval(function() {
-                blink.style.opacity = (blink.style.opacity == 0 ? 1 : 0);
-            }, 1500);
-            
-        </script>
+            <script type="text/javascript">
+                var blink = document.getElementById('blink');
+                setInterval(function() {
+                    blink.style.opacity = (blink.style.opacity == 0 ? 1 : 0);
+                }, 1500);
+                
+            </script>
+        </span>
     </body>
 
 </html>
