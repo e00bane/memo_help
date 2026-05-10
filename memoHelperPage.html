@@ -2,7 +2,7 @@
 <html>
     <head>
         <title>Omar's Workplace Memo Helper</title>
-        <script src="buttonCtrl.js"></script>
+        <script src="copyBtnCtrl.js"></script>
         <script src="Craps.js"></script>
         <script src="memoDropdown.js"></script>
         <script src="memoText.js"></script>
@@ -11,6 +11,13 @@
         <script>
             // Initialize the dropdowns when the DOM is fully loaded
             document.addEventListener('DOMContentLoaded', initializeDropdowns);
+
+            // Update the memo text whenever a dropdown value changes
+            document.addEventListener('change', (e) => {
+                if (e.target && ['ContactDropdown', 'EventDropdown', 'ContextDropdown', 'CallDropdown'].includes(e.target.id)) {
+                    updateMemoText();
+                    }
+            });
         </script>
     </head>
 
