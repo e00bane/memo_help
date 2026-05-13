@@ -4,8 +4,9 @@
         <title>Omar's Workplace Memo Helper</title>
         <script src="copyBtnCtrl.js"></script>
         <script src="Craps.js"></script>
-        <script src="memoDropdown.js"></script>
-        <script src="memoText.js"></script>
+        <script src="memoDropdownCtrl.js"></script>
+        <script src="memoTextCtrl.js"></script>
+        <script src="memoMaker.js"></script>
         <link rel="stylesheet" href="MemoHelperStyle.css">
 
         <script>
@@ -46,14 +47,14 @@
 
         <table id="memoButtonsTbl">
             <tr>
-                <td><button onclick="handleCopyButtonClick('h1CopyButton');" class="button" id="h1CopyButton">H1</button></td>
-                <td><button onclick="handleCopyButtonClick('o1CopyButton');" class="button" id="o1CopyButton">O1</button></td>
-                <td><button onclick="handleCopyButtonClick('w1CopyButton');" class="button" id="w1CopyButton">W1</button></td>
+                <td><button onclick="handleCopyButtonClick('h1CopyButton');" class="button" id="h1CopyButton" value="H1">Home1</button></td>
+                <td><button onclick="handleCopyButtonClick('o1CopyButton');" class="button" id="o1CopyButton" value="O1">O1</button></td>
+                <td><button onclick="handleCopyButtonClick('w1CopyButton');" class="button" id="w1CopyButton" value="W1">W1</button></td>
             </tr>
             <tr>
-                <td><button onclick="handleCopyButtonClick('h2CopyButton');" class="button" id="h2CopyButton">H2</button></td>
-                <td><button onclick="handleCopyButtonClick('o2CopyButton');" class="button" id="o2CopyButton">O2</button></td>
-                <td><button onclick="handleCopyButtonClick('w2CopyButton');" class="button" id="w2CopyButton">W2</button></td>
+                <td><button onclick="handleCopyButtonClick('h2CopyButton');" class="button" id="h2CopyButton" value="H2">H2</button></td>
+                <td><button onclick="handleCopyButtonClick('o2CopyButton');" class="button" id="o2CopyButton" value="O2">O2</button></td>
+                <td><button onclick="handleCopyButtonClick('w2CopyButton');" class="button" id="w2CopyButton" value="W2">W2</button></td>
             </tr>
         </table>
 
@@ -72,7 +73,6 @@
                 setInterval(function() {
                     blink.style.opacity = (blink.style.opacity == 0 ? 1 : 0);
                 }, 1500);
-                
             </script>
         </span>
     </body>
