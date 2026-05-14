@@ -2,22 +2,31 @@
 <html>
     <head>
         <title>Omar's Workplace Memo Helper</title>
-        <script src="copyBtnCtrl.js"></script>
-        <script src="Craps.js"></script>
-        <script src="memoDropdownCtrl.js"></script>
-        <script src="memoTextCtrl.js"></script>
-        <script src="memoMaker.js"></script>
         <link rel="stylesheet" href="MemoHelperStyle.css">
 
-        <script>
-            // Initialize the dropdowns when the DOM is fully loaded
-            document.addEventListener('DOMContentLoaded', initializeDropdowns);
+        <script type="module">
+            import { initializeDropdowns } from './memoDropdownCtrl.js';
+            import { updateMemoText } from './memoTextCtrl.js';
+            import { handleCopyButtonClick } from './copyBtnCtrl.js';
+            import { startCraps } from './Craps.js';
 
-            // Update the memo text whenever a dropdown value changes
-            document.addEventListener('change', (e) => {
-                if (e.target && ['ContactDropdown', 'EventDropdown', 'ContextDropdown', 'CallDropdown'].includes(e.target.id)) {
-                    updateMemoText();
+            window.addEventListener('DOMContentLoaded', () => {
+                initializeDropdowns();
+
+                document.addEventListener('change', (e) => {
+                    if (e.target && ['ContactDropdown', 'EventDropdown', 'ContextDropdown', 'CallDropdown'].includes(e.target.id)) {
+                        updateMemoText();
                     }
+                });
+
+                document.querySelectorAll('button[data-copy-button]').forEach((button) => {
+                    button.addEventListener('click', () => handleCopyButtonClick(button.id));
+                });
+
+                const crapsButton = document.getElementById('crapsPlayButton');
+                if (crapsButton) {
+                    crapsButton.addEventListener('click', startCraps);
+                }
             });
         </script>
     </head>
@@ -47,14 +56,14 @@
 
         <table id="memoButtonsTbl">
             <tr>
-                <td><button onclick="handleCopyButtonClick('h1CopyButton');" class="button" id="h1CopyButton" value="H1">Home1</button></td>
-                <td><button onclick="handleCopyButtonClick('o1CopyButton');" class="button" id="o1CopyButton" value="O1">O1</button></td>
-                <td><button onclick="handleCopyButtonClick('w1CopyButton');" class="button" id="w1CopyButton" value="W1">W1</button></td>
+                <td><button class="button" id="h1CopyButton" data-copy-button value="H1">Home1</button></td>
+                <td><button class="button" id="o1CopyButton" data-copy-button value="O1">O1</button></td>
+                <td><button class="button" id="w1CopyButton" data-copy-button value="W1">W1</button></td>
             </tr>
             <tr>
-                <td><button onclick="handleCopyButtonClick('h2CopyButton');" class="button" id="h2CopyButton" value="H2">H2</button></td>
-                <td><button onclick="handleCopyButtonClick('o2CopyButton');" class="button" id="o2CopyButton" value="O2">O2</button></td>
-                <td><button onclick="handleCopyButtonClick('w2CopyButton');" class="button" id="w2CopyButton" value="W2">W2</button></td>
+                <td><button class="button" id="h2CopyButton" data-copy-button value="H2">H2</button></td>
+                <td><button class="button" id="o2CopyButton" data-copy-button value="O2">O2</button></td>
+                <td><button class="button" id="w2CopyButton" data-copy-button value="W2">W2</button></td>
             </tr>
         </table>
 
@@ -66,7 +75,7 @@
             <div id="die1Res">die1 results</div>
             <div id="die2Res">die2 results</div>
             <div id="sumRes">sum results</div>
-            <button onclick="startCraps();" class="button">Play Craps</button>
+            <button id="crapsPlayButton" class="button">Play Craps</button>
 
             <script type="text/javascript">
                 var blink = document.getElementById('blink');

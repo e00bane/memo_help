@@ -48,3 +48,5 @@ function handleCopyButtonClick(buttonId) {
         console.warn(`Button with ID ${buttonId} not found.`);
     }
 }
+
+export { handleCopyButtonClick };

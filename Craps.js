@@ -16,3 +16,5 @@ function startCraps(){
 
     return 0;
 }
+
+export { startCraps };
