@@ -1,8 +1,5 @@
-
 export class MemoLibrary {
-    constructor() {
-    }
-
+    // constants and mappings
     static get CONTACT_TEXTS() {
         return {0: 'CM', 1: 'NC', 2: 'SPS', 3: 'TP', 4: 'VM'};
     }
@@ -32,5 +29,4 @@ export class MemoLibrary {
             3 : [1, 2]
         };
     }
-
 }

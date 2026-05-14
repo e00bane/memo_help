@@ -4,9 +4,18 @@
 <body>
     <script type="Module">
         import { MemoLibrary } from './memoLibrary.js';
+        import { MemoBuilder } from './memoBuilder.js';
         // Test script for development purposes only
         console.log("Test bench initialized.");
     
+        let memoBuilder = new MemoBuilder();
+
+        memoBuilder.callKey = 0;
+        memoBuilder.contactKey = 0;
+        memoBuilder.eventKey = 1;
+        memoBuilder.contextKey = 0;
+
+        console.log("Generated memo:", memoBuilder.memo);
         let contactList = MemoLibrary.CONTACT_TEXTS ? Object.keys(MemoLibrary.CONTACT_TEXTS) : [];
         // for testing purposes only, remove this when done
         for (const contactKey of contactList) {
