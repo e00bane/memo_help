@@ -20,7 +20,8 @@
                 });
 
                 document.querySelectorAll('button[data-copy-button]').forEach((button) => {
-                    button.addEventListener('click', () => handleCopyButtonClick(button.id));
+                    // Pass the event so the handler can use event.currentTarget and avoid clicks on child nodes
+                    button.addEventListener('click', (e) => handleCopyButtonClick(e));
                 });
 
                 const crapsButton = document.getElementById('crapsPlayButton');
@@ -56,14 +57,14 @@
 
         <table id="memoButtonsTbl">
             <tr>
-                <td><button class="button" id="h1CopyButton" data-copy-button value="H1">Home1</button></td>
-                <td><button class="button" id="o1CopyButton" data-copy-button value="O1">O1</button></td>
-                <td><button class="button" id="w1CopyButton" data-copy-button value="W1">W1</button></td>
+                <td><button name="Home1" class="button" id="h1CopyButton" data-copy-button value="H1">Home 1</button></td>
+                <td><button name="Other1" class="button" id="o1CopyButton" data-copy-button value="O1">Other 1</button></td>
+                <td><button name="Work1" class="button" id="w1CopyButton" data-copy-button value="W1">Work 1</button></td>
             </tr>
             <tr>
-                <td><button class="button" id="h2CopyButton" data-copy-button value="H2">H2</button></td>
-                <td><button class="button" id="o2CopyButton" data-copy-button value="O2">O2</button></td>
-                <td><button class="button" id="w2CopyButton" data-copy-button value="W2">W2</button></td>
+                <td><button name="Home2" class="button" id="h2CopyButton" data-copy-button value="H2">Home 2</button></td>
+                <td><button name="Other2" class="button" id="o2CopyButton" data-copy-button value="O2">Other 2</button></td>
+                <td><button name="Work2" class="button" id="w2CopyButton" data-copy-button value="W2">Work 2</button></td>
             </tr>
         </table>
 

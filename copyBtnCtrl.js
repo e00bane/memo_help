@@ -10,7 +10,7 @@ async function copyMemoText(callpoint_btn_element) {
         return;
     }
 
-    const completeMemoText = `${callpoint_btn_element.innerText} ${memoBody}`;
+    const completeMemoText = `${callpoint_btn_element.value} ${memoBody}`;
 
     callpoint_btn_element.disabled = true; // Disable the button to prevent multiple clicks
 
@@ -30,23 +30,41 @@ async function copyMemoText(callpoint_btn_element) {
 }
 
 
+function getButtonElementById(buttonId) {
+    // `buttonId` can be a string id, an Event, or an Element. Resolve to the actual <button> element.
+
+    if (typeof buttonId === 'string') {
+        return document.getElementById(buttonId);
+    } else if (buttonId && buttonId.currentTarget) {
+        // called with event
+        return buttonId.currentTarget;
+    } else if (buttonId && buttonId.target) {
+        // called with event object but use closest in case a child (like a span) was clicked
+        return buttonId.target.closest ? buttonId.target.closest('button') : null;
+    } else if (buttonId instanceof Element) {
+        return buttonId.closest ? (buttonId.closest('button') || buttonId) : buttonId;
+    }
+
+    return null; // Could not resolve to a button element
+}
+
+
 function handleCopyButtonClick(buttonId) {
-    const callpointBtn = document.getElementById(buttonId);
+    let callpointBtn = getButtonElementById(buttonId);
 
     // handle cases where the button might not be found or is already disabled to prevent errors and unintended behavior
     if (!callpointBtn) {
-        console.warn(`Button with ID ${buttonId} not found.`);
+        console.warn('Copy button not found (resolved from argument):', buttonId);
         return;
-    } 
+    }
+    // Helpful debug info about the resolved button
+    console.log('Resolved copy button -> tag:', callpointBtn.tagName, 'name:', callpointBtn.name, 'id:', callpointBtn.id, 'value:', callpointBtn.value);
     if (callpointBtn.disabled) {
         console.warn('Copy button is currently disabled. Please wait.');
         return;
     }  
     
-    // Delegate disabling/enabling to `copyMemoText` so the button stays disabled
-    // while the temporary "Copied!" label is visible.
     copyMemoText(callpointBtn);
-
     console.log(`Copied memo text to clipboard from button with ID ${buttonId}.`);
 
 }
