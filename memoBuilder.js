@@ -8,6 +8,10 @@ export class MemoBuilder {
     #contextKeys;
 
     constructor() {
+        this.reset();
+    }
+
+    reset() {
         this.#callKey = null;
         this.#contactKey = null;
         this.#eventKey = null;

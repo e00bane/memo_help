@@ -19,6 +19,8 @@ function populateContactDropdown() {
         option.value = contactKey;
         option.text = contactText;
         dropdown.appendChild(option);
+
+        console.log(`Added contact option -> key: ${contactKey}, text: ${contactText}`);
     }
 
     dropdown.addEventListener('change', function() {
@@ -44,6 +46,8 @@ function populateEventDropdown(contactKey) {
         option.value = eventKey;
         option.text = MemoLibrary.EVENT_TEXTS[eventKey];
         eventDropdown.appendChild(option);
+
+        console.log(`Added event option for contact ${contactKey} -> key: ${eventKey}, text: ${MemoLibrary.EVENT_TEXTS[eventKey]}`);
     }
 }
 
@@ -62,6 +66,8 @@ function populateContextDropdown(contactKey) {
         option.value = contextKey;
         option.text = MemoLibrary.CONTEXT_TEXTS[contextKey];
         contextDropdown.appendChild(option);
+        
+        console.log(`Added context option for contact ${contactKey} -> key: ${contextKey}, text: ${MemoLibrary.CONTEXT_TEXTS[contextKey]}`);
     }
 }
 

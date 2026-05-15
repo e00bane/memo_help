@@ -1,30 +1,103 @@
+<!DOCTYPE html>
 <html>
+
 <head>
+    <title>
+        How to use Checkbox inside Select Option using JavaScript?
+    </title>
+
+    <style>
+        h1 {
+            color: green;
+        }
+
+        .multipleSelection {
+            width: 300px;
+            background-color: #BCC2C1;
+        }
+
+        .selectBox {
+            position: relative;
+        }
+
+        .selectBox select {
+            width: 100%;
+            font-weight: bold;
+        }
+
+        .overSelect {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+        }
+
+        #checkBoxes {
+            display: none;
+            border: 1px #8DF5E4 solid;
+        }
+
+        #checkBoxes label {
+            display: block;
+        }
+
+        #checkBoxes label:hover {
+            background-color: #4F615E;
+            color: white;
+            /* Added text color for better visibility */
+        }
+    </style>
 </head>
+
 <body>
-    <script type="Module">
-        import { MemoLibrary } from './memoLibrary.js';
-        import { MemoBuilder } from './memoBuilder.js';
-        // Test script for development purposes only
-        console.log("Test bench initialized.");
-    
-        let memoBuilder = new MemoBuilder();
+    <h1>GEEKSFORGEEKS</h1>
 
-        memoBuilder.callKey = 0;
-        memoBuilder.contactKey = 3;
-        memoBuilder.eventKey = 1;
-        memoBuilder.contextKeys = [3,4];
+    <h2>Use CheckBox inside Select Option</h2>
 
-        console.log("Generated memo:", memoBuilder.memo);
-        let contactList = MemoLibrary.CONTACT_TEXTS ? Object.keys(MemoLibrary.CONTACT_TEXTS) : [];
-        // for testing purposes only, remove this when done
-        for (const contactKey of contactList) {
-            const option = document.createElement('option');
-            let contacts = MemoLibrary.CONTACT_TEXTS[contactKey];
-            let values = Object.values(contacts);
-            console.log(contactKey);
-            console.log(values);
+    <form>
+        <div class="multipleSelection" onmouseenter="showCheckboxes()" onmouseleave="hideCheckboxes()">
+            <div class="selectBox" >
+                <select>
+                    <option>Select options</option>
+                </select>
+                <div class="overSelect"></div>
+            </div>
+
+            <div id="checkBoxes">
+                <label for="first">
+                    <input type="checkbox" id="first" />
+                    checkBox1
+                </label>
+
+                <label for="second">
+                    <input type="checkbox" id="second" />
+                    checkBox2
+                </label>
+                <label for="third">
+                    <input type="checkbox" id="third" />
+                    checkBox3
+                </label>
+                <label for="fourth">
+                    <input type="checkbox" id="fourth" />
+                    checkBox4
+                </label>
+            </div>
+        </div>
+    </form>
+
+    <script>
+        function showCheckboxes() {
+            let checkboxes = document.getElementById("checkBoxes");
+
+                checkboxes.style.display = "block";
+        }    
+
+        function hideCheckboxes() {
+            let checkboxes = document.getElementById("checkBoxes");
+            checkboxes.style.display = "none";
         }
     </script>
 </body>
+
 </html>
