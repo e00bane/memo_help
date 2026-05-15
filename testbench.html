@@ -11,9 +11,9 @@
         let memoBuilder = new MemoBuilder();
 
         memoBuilder.callKey = 0;
-        memoBuilder.contactKey = 0;
+        memoBuilder.contactKey = 3;
         memoBuilder.eventKey = 1;
-        memoBuilder.contextKey = 0;
+        memoBuilder.contextKeys = [3,4];
 
         console.log("Generated memo:", memoBuilder.memo);
         let contactList = MemoLibrary.CONTACT_TEXTS ? Object.keys(MemoLibrary.CONTACT_TEXTS) : [];
