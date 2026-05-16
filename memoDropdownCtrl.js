@@ -1,5 +1,5 @@
 import { MemoLibrary } from './memoLibrary.js';
-
+import { promptCheckboxPopulate } from './dropdownChechboxCtrlInterface.js';
 function getDefaultDDElement() {
     const element = document.createElement('option');
     element.value = '';
@@ -26,6 +26,7 @@ function populateContactDropdown() {
     dropdown.addEventListener('change', function() {
         const selectedContact = this.value;
         populateEventDropdown(selectedContact);
+        promptCheckboxPopulate(selectedContact);
         // TODO: also trigger population of context checkboxes when contact changes, and make sure to clear those checkboxes if the default "---" option is selected to avoid confusion about which contexts are currently selected for the new contact.
     });
 }

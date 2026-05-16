@@ -22,6 +22,28 @@ function getContextList(contactKey) {
     return contextTextsList;
 }
 
+function clearContextFieldset() {
+    const fieldset = document.getElementById("ContextFieldset");
+    fieldset.querySelectorAll("input[type='checkbox']").forEach(checkbox => checkbox.remove());
+    fieldset.querySelectorAll("label").forEach(label => label.remove());
+    fieldset.querySelectorAll("p").forEach(p => p.remove());
+}
+
+function initializeContextFieldset() {
+    console.log('Initializing context fieldset with default state');
+
+    const fieldset = document.getElementById("ContextFieldset");
+    fieldset.querySelectorAll("legend").forEach(legend => legend.remove());
+    fieldset.innerHTML = '';
+    clearContextFieldset();
+
+    let legend = document.createElement('legend');
+    legend.textContent = 'Context:';
+    legend.name = 'ContextLegend';
+    legend.id = 'ContextCheckboxesLegend';
+    fieldset.appendChild(legend);
+    fieldset.appendChild(getDefaultFieldsetElement());
+}
 
 function populateContextFieldset(contactKey) {
     const fieldset = document.getElementById("ContextFieldset");
@@ -29,8 +51,7 @@ function populateContextFieldset(contactKey) {
     let contextTextsList = getContextList(contactKey);
     console.log(`Populating context fieldset for contact ${contactKey} with contexts: ${contextTextsList.join(", ")}`);
     // Clear existing checkboxes
-    fieldset.querySelectorAll("input[type='checkbox']").forEach(checkbox => checkbox.remove());
-    fieldset.querySelectorAll("label").forEach(label => label.remove());
+    clearContextFieldset();
 
     // Populate with new checkboxes
     contextTextsList.forEach((context, index) => {
@@ -53,4 +74,4 @@ function populateContextFieldset(contactKey) {
         }
 }
 
-export { populateContextFieldset };
+export { populateContextFieldset, initializeContextFieldset };

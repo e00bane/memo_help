@@ -8,12 +8,14 @@
         import { initializeDropdowns } from './memoDropdownCtrl.js';
         import { updateMemoText } from './memoTextCtrl.js';
         import { handleCopyButtonClick } from './copyBtnCtrl.js';
+        import { initializeContextFieldset } from './contextCheckboxCtrl.js';
 
 
         // setting listeners
 
         window.addEventListener('DOMContentLoaded', () => {
             initializeDropdowns();
+            initializeContextFieldset();
 
             document.addEventListener('change', (e) => {
                 if (e.target && ['ContactDropdown', 'EventDropdown', 'ContextDropdown', 'CallDropdown'].includes(e.target.id)) {
@@ -49,7 +51,7 @@
     </div>
 
     <fieldset id="ContextFieldset" class="fieldset">
-        <legend>Context:</legend>
+        <legend id="contextLegend">Context:</legend>
 
         <input type="checkbox" id="scales" name="scales" checked />
         <label for="scales">Scales</label>
