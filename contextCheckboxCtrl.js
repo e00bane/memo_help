@@ -1,6 +1,12 @@
 import { MemoLibrary } from "./memoLibrary.js";
 
 
+function getDefaultFieldsetElement() {
+    const element = document.createElement('p');
+    element.textContent = 'context fieldset';
+    return element;
+}
+
 function getContextList(contactKey) {
     let key = parseInt(contactKey);
     let contextKeysList = MemoLibrary.CONTACT_CONTEXT_LISTS[key] || [];
@@ -43,9 +49,7 @@ function populateContextFieldset(contactKey) {
         });
 
         if (contextTextsList.length === 0) {
-            const noContextMessage = document.createElement("p");
-            noContextMessage.textContent = "No contexts available for this contact.";
-            fieldset.appendChild(noContextMessage);
+            fieldset.appendChild(getDefaultFieldsetElement());
         }
 }
 

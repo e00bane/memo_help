@@ -5,13 +5,10 @@
     <link rel="stylesheet" href="MemoHelperStyle.css">
 
     <script type="module">
-        import { initializeDropdowns, hideCheckboxes, toggleCheckboxes, checkboxesIsHidden } from './memoDropdownCtrl.js';
+        import { initializeDropdowns } from './memoDropdownCtrl.js';
         import { updateMemoText } from './memoTextCtrl.js';
         import { handleCopyButtonClick } from './copyBtnCtrl.js';
 
-        
-        const contextDropdownBox = document.getElementById('contextDropdownBox');
-        const contextSelectBox = contextDropdownBox ? contextDropdownBox.querySelector('.selectBox') : null;
 
         // setting listeners
 
@@ -28,20 +25,6 @@
                 // Pass the event so the handler can use event.currentTarget and avoid clicks on child nodes
                 button.addEventListener('click', (e) => handleCopyButtonClick(e));
             });
-
-
-            if (contextSelectBox) {
-                contextSelectBox.addEventListener('click', toggleCheckboxes);
-            }
-
-            document.addEventListener('click', (e) => {
-                if (contextDropdownBox && 
-                !contextDropdownBox.contains(e.target) && 
-                checkboxesIsHidden() === false) {
-                    hideCheckboxes();
-                }
-            });
-
         });
     </script>
 </head>
@@ -63,7 +46,6 @@
         <br>
         <select id="ContactDropdown" class="MemoDropdown"></select>
         <select id="EventDropdown" class="MemoDropdown"></select>
-        <select id="ContextDropdown" class="MemoDropdown"></select>
     </div>
 
     <fieldset id="ContextFieldset" class="fieldset">
