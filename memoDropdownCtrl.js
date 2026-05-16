@@ -66,10 +66,11 @@ function populateContextDropdown(contactKey) {
         option.value = contextKey;
         option.text = MemoLibrary.CONTEXT_TEXTS[contextKey];
         contextDropdown.appendChild(option);
-        
+
         console.log(`Added context option for contact ${contactKey} -> key: ${contextKey}, text: ${MemoLibrary.CONTEXT_TEXTS[contextKey]}`);
     }
 }
+
 
 function initializeDropdown(dropdownId) {
         const dropdown = document.getElementById(dropdownId);
@@ -85,5 +86,38 @@ function initializeDropdowns() {
     initializeDropdown('EventDropdown');
     initializeDropdown('ContextDropdown');
 }
+
+
+function showCheckboxes() {
+    let checkboxes = document.getElementById("contextCheckboxes");
+        checkboxes.style.display = "block";
+}    
+
+function hideCheckboxes() {
+    let checkboxes = document.getElementById("contextCheckboxes");
+    checkboxes.style.display = "none";
+}
+
+function populateContextCheckboxes() {
+    const checkboxesContainer = document.getElementById('contextCheckboxes');
+    checkboxesContainer.innerHTML = ''; // Clear existing checkboxes
+
+    const options = ['Option 1', 'Option 2', 'Option 3', 'Option 4']; // Example options
+
+    options.forEach((option, index) => {
+        const label = document.createElement('label');
+        label.setAttribute('for', `checkbox${index}`);
+
+        const checkbox = document.createElement('input');
+        checkbox.type = 'checkbox';
+        checkbox.id = `checkbox${index}`;
+
+        label.appendChild(checkbox);
+        label.appendChild(document.createTextNode(option));
+
+        checkboxesContainer.appendChild(label);
+    });
+}
+
 
 export { initializeDropdowns };

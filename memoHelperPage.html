@@ -8,7 +8,6 @@
             import { initializeDropdowns } from './memoDropdownCtrl.js';
             import { updateMemoText } from './memoTextCtrl.js';
             import { handleCopyButtonClick } from './copyBtnCtrl.js';
-            import { startCraps } from './Craps.js';
 
             
             window.addEventListener('DOMContentLoaded', () => {
@@ -52,6 +51,15 @@
                 <td><select id="ContactDropdown" class="MemoDropdown"></select></td>
                 <td><select id="EventDropdown" class="MemoDropdown"></select></td>
                 <td><select id="ContextDropdown" class="MemoDropdown"></select></td>
+                <td><div class="MemoDropdown" id="contextDropdownBox" onmouseleave="hideCheckboxes()">
+                    <div class="selectBox" onclick="showCheckboxes()">
+                        <select>
+                            <option>-- Select --</option>
+                        </select>
+                        <div class="overSelect"></div>
+                    </div>
+                    <div id="contextCheckboxes"></div>
+                </div></td>
             </tr>
         </table>
 
@@ -70,22 +78,6 @@
         </table>
 
         <br>
-        <span id="crapsGame">
-            <h2 id = "blink">Let's Play Craps</h2>
-            <br>
-            <div id="crapsRes">Craps results</div>
-            <div id="die1Res">die1 results</div>
-            <div id="die2Res">die2 results</div>
-            <div id="sumRes">sum results</div>
-            <button id="crapsPlayButton" class="button">Play Craps</button>
-
-            <script type="text/javascript">
-                var blink = document.getElementById('blink');
-                setInterval(function() {
-                    blink.style.opacity = (blink.style.opacity == 0 ? 1 : 0);
-                }, 1500);
-            </script>
-        </span>
     </body>
 
 </html>

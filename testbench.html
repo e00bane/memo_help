@@ -33,21 +33,28 @@
             bottom: 0;
         }
 
-        #checkBoxes {
+        #contextCheckboxes {
             display: none;
             border: 1px #8DF5E4 solid;
         }
 
-        #checkBoxes label {
+        #contextCheckboxes label {
             display: block;
         }
 
-        #checkBoxes label:hover {
+        #contextCheckboxes label:hover {
             background-color: #4F615E;
             color: white;
             /* Added text color for better visibility */
         }
     </style>
+
+    <script>
+        // Initialize the checkboxes when the page loads
+        document.addEventListener('DOMContentLoaded', () => {
+            populateContextCheckboxes();
+        });
+    </script>
 </head>
 
 <body>
@@ -55,47 +62,46 @@
 
     <h2>Use CheckBox inside Select Option</h2>
 
-    <form>
-        <div class="multipleSelection" onmouseenter="showCheckboxes()" onmouseleave="hideCheckboxes()">
-            <div class="selectBox" >
-                <select>
-                    <option>Select options</option>
-                </select>
-                <div class="overSelect"></div>
-            </div>
-
-            <div id="checkBoxes">
-                <label for="first">
-                    <input type="checkbox" id="first" />
-                    checkBox1
-                </label>
-
-                <label for="second">
-                    <input type="checkbox" id="second" />
-                    checkBox2
-                </label>
-                <label for="third">
-                    <input type="checkbox" id="third" />
-                    checkBox3
-                </label>
-                <label for="fourth">
-                    <input type="checkbox" id="fourth" />
-                    checkBox4
-                </label>
-            </div>
+    <div class="multipleSelection" id="contextDropdownBox" onmouseleave="hideCheckboxes()">
+        <div class="selectBox" onclick="showCheckboxes()">
+            <select>
+                <option>Select options</option>
+            </select>
+            <div class="overSelect"></div>
         </div>
-    </form>
+        <div id="contextCheckboxes"></div>
+    </div>
 
     <script>
         function showCheckboxes() {
-            let checkboxes = document.getElementById("checkBoxes");
-
+            let checkboxes = document.getElementById("contextCheckboxes");
                 checkboxes.style.display = "block";
         }    
 
         function hideCheckboxes() {
-            let checkboxes = document.getElementById("checkBoxes");
+            let checkboxes = document.getElementById("contextCheckboxes");
             checkboxes.style.display = "none";
+        }
+
+        function populateContextCheckboxes() {
+            const checkboxesContainer = document.getElementById('contextCheckboxes');
+            checkboxesContainer.innerHTML = ''; // Clear existing checkboxes
+
+            const options = ['Option 1', 'Option 2', 'Option 3', 'Option 4']; // Example options
+
+            options.forEach((option, index) => {
+                const label = document.createElement('label');
+                label.setAttribute('for', `checkbox${index}`);
+
+                const checkbox = document.createElement('input');
+                checkbox.type = 'checkbox';
+                checkbox.id = `checkbox${index}`;
+
+                label.appendChild(checkbox);
+                label.appendChild(document.createTextNode(option));
+
+                checkboxesContainer.appendChild(label);
+            });
         }
     </script>
 </body>
