@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="MemoHelperStyle.css">
 
     <script type="module">
-        import { initializeDropdowns, showCheckboxes, hideCheckboxes, toggleCheckboxes, checkboxesIsHidden } from './memoDropdownCtrl.js';
+        import { initializeDropdowns, hideCheckboxes, toggleCheckboxes, checkboxesIsHidden } from './memoDropdownCtrl.js';
         import { updateMemoText } from './memoTextCtrl.js';
         import { handleCopyButtonClick } from './copyBtnCtrl.js';
 
@@ -58,41 +58,38 @@
 
         
     <!-- Dropdowns for Contact, Event, Context, and Call -->
-    <table id="memoBuilderTbl">
-        <tr>
-            <h3><span id="MemoText">Memo Text</span></h3>
-        </tr>
-        <tr>
-            <td><select id="ContactDropdown" class="MemoDropdown"></select></td>
-            <td><select id="EventDropdown" class="MemoDropdown"></select></td>
-            <td><select id="ContextDropdown" class="MemoDropdown"></select></td>
-            <td><div class="MemoDropdown" id="contextDropdownBox">
-                <div class="selectBox" id="contextSelectBox">
-                    <select>
-                        <option>-- Select --</option>
-                    </select>
-                    <div class="overSelect"></div>
-                </div>
-                <div id="contextCheckboxes"></div>
-            </div></td>
-        </tr>
-    </table>
+    <div id="MemoConfigurationTools">
+        <h3><span id="MemoText">Memo Text</span></h3>
+        <br>
+        <select id="ContactDropdown" class="MemoDropdown"></select>
+        <select id="EventDropdown" class="MemoDropdown"></select>
+        <select id="ContextDropdown" class="MemoDropdown"></select>
+    </div>
+
+    <fieldset id="ContextFieldset" class="fieldset">
+        <legend>Context:</legend>
+
+        <input type="checkbox" id="scales" name="scales" checked />
+        <label for="scales">Scales</label>
+
+        <input type="checkbox" id="horns" name="horns" />
+        <label for="horns">Horns</label>
+    </fieldset>
 
 
     <!-- Buttons for copying memo text with different prefixes -->
-    <table id="memoButtonsTbl">
-        <tr>
-            <td><button name="Home1" class="button" id="h1CopyButton" data-copy-button value="H1">Home 1</button></td>
-            <td><button name="Other1" class="button" id="o1CopyButton" data-copy-button value="O1">Other 1</button></td>
-            <td><button name="Work1" class="button" id="w1CopyButton" data-copy-button value="W1">Work 1</button></td>
-        </tr>
-        <tr>
-            <td><button name="Home2" class="button" id="h2CopyButton" data-copy-button value="H2">Home 2</button></td>
-            <td><button name="Other2" class="button" id="o2CopyButton" data-copy-button value="O2">Other 2</button></td>
-            <td><button name="Work2" class="button" id="w2CopyButton" data-copy-button value="W2">Work 2</button></td>
-        </tr>
-    </table>
-
+    <div id="memoButtons">
+        <div id="memoButtonsA">
+            <button name="Home1" class="button" id="h1CopyButton" data-copy-button value="H1">Home 1</button>
+            <button name="Other1" class="button" id="o1CopyButton" data-copy-button value="O1">Other 1</button>
+            <button name="Work1" class="button" id="w1CopyButton" data-copy-button value="W1">Work 1</button>
+        </div>
+        <div id="memoButtonsB">
+            <button name="Home2" class="button" id="h2CopyButton" data-copy-button value="H2">Home 2</button>
+            <button name="Other2" class="button" id="o2CopyButton" data-copy-button value="O2">Other 2</button>
+            <button name="Work2" class="button" id="w2CopyButton" data-copy-button value="W2">Work 2</button>
+        </div>
+    </div>
     <br>
 </body>
 </html>

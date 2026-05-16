@@ -10,49 +10,13 @@
         h1 {
             color: green;
         }
-
-        .multipleSelection {
-            width: 300px;
-            background-color: #BCC2C1;
-        }
-
-        .selectBox {
-            position: relative;
-        }
-
-        .selectBox select {
-            width: 100%;
-            font-weight: bold;
-        }
-
-        .overSelect {
-            position: absolute;
-            left: 0;
-            right: 0;
-            top: 0;
-            bottom: 0;
-        }
-
-        #contextCheckboxes {
-            display: none;
-            border: 1px #8DF5E4 solid;
-        }
-
-        #contextCheckboxes label {
-            display: block;
-        }
-
-        #contextCheckboxes label:hover {
-            background-color: #4F615E;
-            color: white;
-            /* Added text color for better visibility */
-        }
     </style>
 
-    <script>
+    <script type="module">
+        import {populateContextFieldset} from './contextCheckboxCtrl.js';
         // Initialize the checkboxes when the page loads
         document.addEventListener('DOMContentLoaded', () => {
-            populateContextCheckboxes();
+            populateContextFieldset(3); // Example: populate with context options for the first contact
         });
     </script>
 </head>
@@ -62,48 +26,11 @@
 
     <h2>Use CheckBox inside Select Option</h2>
 
-    <div class="multipleSelection" id="contextDropdownBox" onmouseleave="hideCheckboxes()">
-        <div class="selectBox" onclick="showCheckboxes()">
-            <select>
-                <option>Select options</option>
-            </select>
-            <div class="overSelect"></div>
-        </div>
-        <div id="contextCheckboxes"></div>
-    </div>
+    <p>Click the dropdown to see the checkboxes:</p>
 
-    <script>
-        function showCheckboxes() {
-            let checkboxes = document.getElementById("contextCheckboxes");
-                checkboxes.style.display = "block";
-        }    
-
-        function hideCheckboxes() {
-            let checkboxes = document.getElementById("contextCheckboxes");
-            checkboxes.style.display = "none";
-        }
-
-        function populateContextCheckboxes() {
-            const checkboxesContainer = document.getElementById('contextCheckboxes');
-            checkboxesContainer.innerHTML = ''; // Clear existing checkboxes
-
-            const options = ['Option 1', 'Option 2', 'Option 3', 'Option 4']; // Example options
-
-            options.forEach((option, index) => {
-                const label = document.createElement('label');
-                label.setAttribute('for', `checkbox${index}`);
-
-                const checkbox = document.createElement('input');
-                checkbox.type = 'checkbox';
-                checkbox.id = `checkbox${index}`;
-
-                label.appendChild(checkbox);
-                label.appendChild(document.createTextNode(option));
-
-                checkboxesContainer.appendChild(label);
-            });
-        }
-    </script>
+    <fieldset id="ContextFieldset" class="fieldset">
+        <legend>Context:</legend>
+    </fieldset>
 </body>
 
 </html>

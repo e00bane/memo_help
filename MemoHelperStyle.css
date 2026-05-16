@@ -37,7 +37,14 @@ body{
 
 #contextCheckboxes {
     display: none;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    min-width: 100%;
     border: 1px #8DF5E4 solid;
+    background-color: white;
+    padding: 10px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
 }
 
 #contextCheckboxes label {
