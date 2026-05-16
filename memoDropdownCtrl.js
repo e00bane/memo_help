@@ -80,22 +80,19 @@ function initializeDropdown(dropdownId) {
         dropdown.appendChild(getDefaultDDElement());
 }
 
-function initializeDropdowns() {
-    populateContactDropdown();
-    
-    initializeDropdown('EventDropdown');
-    initializeDropdown('ContextDropdown');
-}
-
 
 function showCheckboxes() {
     let checkboxes = document.getElementById("contextCheckboxes");
-        checkboxes.style.display = "block";
+    checkboxes.style.display = "block";
+
+    console.log('Context checkboxes shown');
 }    
 
 function hideCheckboxes() {
     let checkboxes = document.getElementById("contextCheckboxes");
     checkboxes.style.display = "none";
+
+    console.log('Context checkboxes hidden');
 }
 
 function populateContextCheckboxes() {
@@ -119,5 +116,27 @@ function populateContextCheckboxes() {
     });
 }
 
+function checkboxesIsHidden() {
+    let checkboxes = document.getElementById("contextCheckboxes");
+    return checkboxes.style.display === "none" || checkboxes.style.display === "";
+}
 
-export { initializeDropdowns };
+function toggleCheckboxes() {
+    let checkboxes = document.getElementById("contextCheckboxes"); 
+    if (checkboxes.style.display === "block") {
+        hideCheckboxes();
+    } else {
+        showCheckboxes();
+    }
+}
+
+function initializeDropdowns() {
+    populateContactDropdown();
+    
+    initializeDropdown('EventDropdown');
+    initializeDropdown('ContextDropdown');
+    populateContextCheckboxes();
+
+}
+
+export { initializeDropdowns, showCheckboxes, hideCheckboxes, toggleCheckboxes, checkboxesIsHidden };
