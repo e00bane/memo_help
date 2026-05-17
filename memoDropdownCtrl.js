@@ -20,15 +20,15 @@ function populateContactDropdown() {
         option.text = contactText;
         dropdown.appendChild(option);
 
-        console.log(`Added contact option -> key: ${contactKey}, text: ${contactText}`);
     }
 
     dropdown.addEventListener('change', function() {
         const selectedContact = this.value;
         populateEventDropdown(selectedContact);
         promptCheckboxPopulate(selectedContact);
-        // TODO: also trigger population of context checkboxes when contact changes, and make sure to clear those checkboxes if the default "---" option is selected to avoid confusion about which contexts are currently selected for the new contact.
     });
+
+    console.log(`Populated contact dropdown with contacts: ${Object.keys(MemoLibrary.CONTACT_TEXTS).join(", ")}`);
 }
 
 // Minimal stubs so change handler won't throw if those dropdowns aren't implemented yet.
@@ -47,9 +47,9 @@ function populateEventDropdown(contactKey) {
         option.value = eventKey;
         option.text = MemoLibrary.EVENT_TEXTS[eventKey];
         eventDropdown.appendChild(option);
-
-        console.log(`Added event option for contact ${contactKey} -> key: ${eventKey}, text: ${MemoLibrary.EVENT_TEXTS[eventKey]}`);
     }
+
+    console.log(`Populated event dropdown for contact ${contactKey} with events: ${eventList.join(", ")}`);
 }
 
 

@@ -36,20 +36,19 @@ function getContextKeysList() {
 }
 
 
-function updateMemoText() {  // TODO: refactor to incorporate changes to the dropdowns and checkboxes, and make sure to handle cases where some of those fields might not have a selected value to avoid showing "undefined" in the memo text when only some of the fields are selected.
+function updateMemoText() {
     const contactDropdown = document.getElementById('ContactDropdown');
     const eventDropdown = document.getElementById('EventDropdown');
-    //const contextDropdown = document.getElementById('ContextDropdown');
 
     const memoTextElement = document.getElementById('MemoText');
 
     console.log(`Updating memo text with contactKey: ${contactDropdown.value}, eventKey: ${eventDropdown.value}, contextKeys: ${getContextKeysList()}`);
-    memo_builder.contactKey = contactDropdown.value ? parseInt(contactDropdown.value) : null;
-    if (eventDropdown.value) {memo_builder.eventKey = parseInt(eventDropdown.value);}
-    memo_builder.contextKeys = getContextKeysList();
-    const combinedText =memo_builder.memo;
-    
-    memoTextElement.innerHTML = combinedText;  // applying changes to the memo text element
+    if (contactDropdown.value) { memo_builder.contactKey = parseInt(contactDropdown.value); }
+    if (eventDropdown.value) { memo_builder.eventKey = parseInt(eventDropdown.value); }
+    let contextKeysList = getContextKeysList().map(key => parseInt(key));
+    if (contextKeysList.length > 0) { memo_builder.contextKeys = contextKeysList; }
+
+    memoTextElement.innerHTML = memo_builder.memo;  // applying changes to the memo text element
 }
 
 export { updateMemoText };
