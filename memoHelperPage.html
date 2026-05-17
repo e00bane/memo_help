@@ -1,80 +1,77 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <title>Omar's Workplace Memo Helper</title>
-        <script src="copyBtnCtrl.js"></script>
-        <script src="Craps.js"></script>
-        <script src="memoDropdown.js"></script>
-        <script src="memoText.js"></script>
-        <link rel="stylesheet" href="MemoHelperStyle.css">
+<head>
+    <title>Omar's Workplace Memo Helper</title>
+    <link rel="stylesheet" href="MemoHelperStyle.css">
 
-        <script>
-            // Initialize the dropdowns when the DOM is fully loaded
-            document.addEventListener('DOMContentLoaded', initializeDropdowns);
+    <script type="module">
+        import { initializeDropdowns } from './memoDropdownCtrl.js';
+        import { updateMemoText } from './memoTextCtrl.js';
+        import { handleCopyButtonClick } from './copyBtnCtrl.js';
+        import { initializeContextFieldset } from './contextCheckboxCtrl.js';
 
-            // Update the memo text whenever a dropdown value changes
+
+        // setting listeners
+
+        window.addEventListener('DOMContentLoaded', () => {
+            initializeDropdowns();
+            initializeContextFieldset();
+
             document.addEventListener('change', (e) => {
-                if (e.target && ['ContactDropdown', 'EventDropdown', 'ContextDropdown', 'CallDropdown'].includes(e.target.id)) {
+                if (
+                    e.target && (
+                        ['ContactDropdown', 'EventDropdown'].includes(e.target.id) ||
+                        (e.target.matches('input[type="checkbox"]') && e.target.closest('#ContextFieldset'))
+                    )
+                ) {
                     updateMemoText();
-                    }
+                }
             });
-        </script>
-    </head>
 
-    <body>
-        <table id="HeaderTbl">
-            <td>
-                <img src="https://www.clipartmax.com/png/small/4-40964_man-computer-clipart-work-working-office-workplace-work-desk-icon.png" alt="Man Computer Clipart Work Working Office Workplace - Work Desk Icon @clipartmax.com">
-            </td>
-            <td>
-                <h1>Workplace Memo Helper</h1>
-            </td>
-        </table>
+            document.querySelectorAll('button[data-copy-button]').forEach((button) => {
+                // Pass the event so the handler can use event.currentTarget and avoid clicks on child nodes
+                button.addEventListener('click', (e) => handleCopyButtonClick(e));
+            });
+        });
+    </script>
+</head>
 
-            
-        <table id="memoBuilderTbl">
-            <tr>
-                <h3><span id="MemoText">Memo Text</span></h3>
-            </tr>
-            <tr>
-                <td><select id="ContactDropdown" class="MemoDropdown"></select></td>
-                <td><select id="EventDropdown" class="MemoDropdown"></select></td>
-                <td><select id="ContextDropdown" class="MemoDropdown"></select></td>
-            </tr>
-        </table>
+<body>
+    <table id="HeaderTbl">
+        <td>
+            <img src="https://www.clipartmax.com/png/small/4-40964_man-computer-clipart-work-working-office-workplace-work-desk-icon.png" alt="Man Computer Clipart Work Working Office Workplace - Work Desk Icon @clipartmax.com">
+        </td>
+        <td>
+            <h1>Workplace Memo Helper</h1>
+        </td>
+    </table>
 
-
-        <table id="memoButtonsTbl">
-            <tr>
-                <td><button onclick="handleCopyButtonClick('h1CopyButton');" class="button" id="h1CopyButton">H1</button></td>
-                <td><button onclick="handleCopyButtonClick('o1CopyButton');" class="button" id="o1CopyButton">O1</button></td>
-                <td><button onclick="handleCopyButtonClick('w1CopyButton');" class="button" id="w1CopyButton">W1</button></td>
-            </tr>
-            <tr>
-                <td><button onclick="handleCopyButtonClick('h2CopyButton');" class="button" id="h2CopyButton">H2</button></td>
-                <td><button onclick="handleCopyButtonClick('o2CopyButton');" class="button" id="o2CopyButton">O2</button></td>
-                <td><button onclick="handleCopyButtonClick('w2CopyButton');" class="button" id="w2CopyButton">W2</button></td>
-            </tr>
-        </table>
-
+        
+    <!-- Dropdowns for Contact, Event, Context, and Call -->
+    <div id="MemoConfigurationTools">
+        <h3><span id="MemoText">Memo Text</span></h3>
         <br>
-        <span id="crapsGame">
-            <h2 id = "blink">Let's Play Craps</h2>
-            <br>
-            <div id="crapsRes">Craps results</div>
-            <div id="die1Res">die1 results</div>
-            <div id="die2Res">die2 results</div>
-            <div id="sumRes">sum results</div>
-            <button onclick="startCraps();" class="button">Play Craps</button>
+        <select id="ContactDropdown" class="MemoDropdown"></select>
+        <select id="EventDropdown" class="MemoDropdown"></select>
+    </div>
 
-            <script type="text/javascript">
-                var blink = document.getElementById('blink');
-                setInterval(function() {
-                    blink.style.opacity = (blink.style.opacity == 0 ? 1 : 0);
-                }, 1500);
-                
-            </script>
-        </span>
-    </body>
+    <fieldset id="ContextFieldset" class="fieldset">
+    </fieldset>
 
+
+    <!-- Buttons for copying memo text with different prefixes -->
+    <div id="memoButtons">
+        <div id="memoButtonsA">
+            <button name="Home1" class="button" id="h1CopyButton" data-copy-button value="H1">Home 1</button>
+            <button name="Other1" class="button" id="o1CopyButton" data-copy-button value="O1">Other 1</button>
+            <button name="Work1" class="button" id="w1CopyButton" data-copy-button value="W1">Work 1</button>
+        </div>
+        <div id="memoButtonsB">
+            <button name="Home2" class="button" id="h2CopyButton" data-copy-button value="H2">Home 2</button>
+            <button name="Other2" class="button" id="o2CopyButton" data-copy-button value="O2">Other 2</button>
+            <button name="Work2" class="button" id="w2CopyButton" data-copy-button value="W2">Work 2</button>
+        </div>
+    </div>
+    <br>
+</body>
 </html>

@@ -4,13 +4,6 @@ body{
     font-family: 'Times New Roman', Times, serif;
 }
 
-#blink {
-    font-size: 20px;
-    font-weight: bold;
-    color: #b30f0f;
-    transition: 0.5s;
-}
-
 .button{
     background-color: white;
     width: 100px;
@@ -23,4 +16,53 @@ body{
     margin: 5px;
     padding: 5px;
     font-size: 16px;
+}
+
+.selectBox {
+    position: relative;
+}
+
+.selectBox select {
+    width: 100%;
+    font-weight: bold;
+}
+
+.overSelect {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+}
+
+#contextCheckboxes {
+    display: none;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    min-width: 100%;
+    border: 1px #8DF5E4 solid;
+    background-color: white;
+    padding: 10px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+}
+
+#contextCheckboxes label {
+    display: block;
+}
+
+#contextCheckboxes label:hover {
+    background-color: #4F615E;
+    color: white;
+    /* Added text color for better visibility */
+}
+
+#ContextFieldset {
+    margin: 5px;
+    padding: 5px;
+    font-size: 16px;
+    border: 1px solid #8DF5E4;
+    border-radius: 8px;
+    background-color: white;
+    width: 300px;
 }
