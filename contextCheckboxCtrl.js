@@ -48,28 +48,29 @@ function initializeContextFieldset() {
 function populateContextFieldset(contactKey) {
     const fieldset = document.getElementById("ContextFieldset");
 
-    let contextTextsList = getContextList(contactKey);
-    console.log(`Populating context fieldset for contact ${contactKey} with contexts: ${contextTextsList.join(", ")}`);
+    let key = parseInt(contactKey);
+    let contextTextsKeysList = MemoLibrary.CONTACT_CONTEXT_LISTS[key] || [];
+    console.log(`Populating context fieldset for contact ${contactKey} with contexts: ${contextTextsKeysList.join(", ")}`);
     // Clear existing checkboxes
     clearContextFieldset();
 
     // Populate with new checkboxes
-    contextTextsList.forEach((context, index) => {
+    contextTextsKeysList.forEach((contextKey, index) => {
         const checkbox = document.createElement("input");
         checkbox.type = "checkbox";
-        checkbox.id = `context${index}`;
+        checkbox.id = `Checkbox${index}`;
         checkbox.name = "context";
-        checkbox.value = context;
+        checkbox.value = parseInt(contextKey);
 
         const label = document.createElement("label");
-        label.htmlFor = `context${index}`;
-        label.textContent = context;
+        label.htmlFor = `Checkbox${index}`;
+        label.textContent = MemoLibrary.CONTEXT_TEXTS[contextKey] || `Context ${contextKey}`;
 
         fieldset.appendChild(checkbox);
         fieldset.appendChild(label);
         });
 
-        if (contextTextsList.length === 0) {
+        if (contextTextsKeysList.length === 0) {
             fieldset.appendChild(getDefaultFieldsetElement());
         }
 }

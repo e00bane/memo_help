@@ -10,7 +10,7 @@ export class MemoLibrary {
         return {0: 'DISC', 1: 'XFR', 2: 'NA', 3: 'SIT', 4: 'INCOMPLETE', 5: 'LM', 6: 'NML', 7: 'VMF', 8: 'VMNSU'};
     }
     static get CONTEXT_TEXTS() {
-        return {0: 'CC', 1: 'RELATIVE', 2: 'WRONG#', 3: 'FL', 4: 'RELATIVE'};
+        return {0: 'CC', 1: 'RELATIVE', 2: 'WRONG#', 3: 'FL'};
     }
 
 
@@ -27,7 +27,7 @@ export class MemoLibrary {
     static get CONTACT_CONTEXT_LISTS() {
         return {
             0 : [0],  // CM
-            3 : [1, 2, 3, 4]  // TP
+            3 : [1, 2, 3]  // TP
         };
     }
 }

@@ -14,6 +14,13 @@
 
     <script type="module">
         import {populateContextFieldset} from './contextCheckboxCtrl.js';
+        import {MemoBuilder} from './memoBuilder.js';
+        let memo_builder = new MemoBuilder();
+        memo_builder.callKey = 3;
+        memo_builder.contactKey = 3;
+        memo_builder.eventKey = 1;
+        memo_builder.contextKeys = [1, 3];
+
         // Initialize the checkboxes when the page loads
         document.addEventListener('DOMContentLoaded', () => {
             populateContextFieldset(3); // Example: populate with context options for the first contact

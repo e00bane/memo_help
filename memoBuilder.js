@@ -58,7 +58,7 @@ export class MemoBuilder {
     }
     handleContextListParameter(key_list) {
         let contextList = MemoLibrary.CONTACT_CONTEXT_LISTS[this.#contactKey] || [];
-        this.#contextKeys = key_list.filter(key => contextList.includes(key));
+        this.#contextKeys = key_list.filter(key => contextList.includes(parseInt(key)));
 
         if (this.#contextKeys.length != key_list.length) {
             console.warn(`Some context keys in ${key_list} are invalid for contact ${this.#contactKey}. Valid keys retained, invalid keys removed.`);
