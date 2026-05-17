@@ -6,27 +6,34 @@
 
     <script type="module">
         import { initializeDropdowns } from './memoDropdownCtrl.js';
-        import { updateMemoText } from './memoTextCtrl.js';
+        import { updateMemoText, initializeMemoText } from './memoTextCtrl.js';
+        import { updateSharedMemoBuilder as contextUpdateMB} from './contextCheckboxCtrl.js';
+        import { updateSharedMemoBuilder as dropdownUpdateMB} from './memoDropdownCtrl.js';
         import { handleCopyButtonClick } from './copyBtnCtrl.js';
         import { initializeContextFieldset } from './contextCheckboxCtrl.js';
         import { MemoBuilder } from './memoBuilder.js';
 
-        let pageMemoBuilder = new MemoBuilder();
+        let sharedMemoBuilder = new MemoBuilder();
 
 
         // setting listeners
         window.addEventListener('DOMContentLoaded', () => {
             initializeDropdowns();
             initializeContextFieldset();
+            initializeMemoText();
 
             document.addEventListener('change', (e) => {
                 if (
-                    e.target && (
-                        ['ContactDropdown', 'EventDropdown'].includes(e.target.id) ||
-                        (e.target.matches('input[type="checkbox"]') && e.target.closest('#ContextFieldset'))
-                    )
+                    e.target && (['ContactDropdown', 'EventDropdown'].includes(e.target.id))
                 ) {
-                    updateMemoText();
+                    dropdownUpdateMB(sharedMemoBuilder);
+                    updateMemoText(sharedMemoBuilder);
+                }
+                if (
+                    e.target && ((e.target.matches('input[type="checkbox"]') && e.target.closest('#ContextFieldset')))
+                ) {
+                    contextUpdateMB(sharedMemoBuilder);
+                    updateMemoText(sharedMemoBuilder);
                 }
             });
 

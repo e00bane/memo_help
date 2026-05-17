@@ -20,21 +20,31 @@ export class MemoBuilder {
 
      // setters
     set callKey(key) {
-        this.#callKey = key;
+        if (key !== null && !MemoLibrary.CALL_TEXTS.hasOwnProperty(key)) {
+            console.warn(`Invalid call key ${key}. Call key reset.`);
+            this.#callKey = null;
+        } else {
+            this.#callKey = key;
+        }
     }
     set contactKey(key) {
-        this.#contactKey = key;
+        if (key !== null && !MemoLibrary.CONTACT_TEXTS.hasOwnProperty(key)) {
+            console.warn(`Invalid contact key ${key}. Contact key reset.`);
+            this.#contactKey = null;
+        } else {
+            this.#contactKey = key;
+        }
     }
     set eventKey(key) {
         let eventList = MemoLibrary.CONTACT_EVENT_LISTS[this.#contactKey] || [];
         this.#eventKey = eventList.includes(key) ? key : null;
 
-        if (this.#eventKey == null) {
+        if (this.#eventKey === null && key != null) {
             console.warn(`Invalid event key ${key} for contact ${this.#contactKey}. Event key reset.`);
         }
     }
     set contextKeys(param) {
-        if(this.#contactKey === null || param === null) {
+        if((this.#contactKey === null || param === null)) {
             this.#contextKeys = [];
             return;
         }
@@ -68,6 +78,18 @@ export class MemoBuilder {
         }
     }
 
+    get callKey() {
+        return this.#callKey;
+    }
+    get contactKey() {
+        return this.#contactKey;
+    }
+    get eventKey() {
+        return this.#eventKey;
+    }
+    get contextKeys() {
+        return this.#contextKeys;
+    }
     get memo() {
         const contactText = this.#contactKey !== null ? MemoLibrary.CONTACT_TEXTS[this.#contactKey] : '';
         const eventText = this.#eventKey !== null ? MemoLibrary.EVENT_TEXTS[this.#eventKey] : '';

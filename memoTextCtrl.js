@@ -3,6 +3,7 @@ import { MemoLibrary } from './memoLibrary.js';
 
 let memo_builder = new MemoBuilder();
 
+const DEFAULT_MEMO_TEXT = "Select a contact and event to generate a memo.";
 
 function getCheckedContextKeysList() {
     const contextFieldset = document.getElementById('ContextFieldset');
@@ -20,22 +21,20 @@ function getCheckedContextKeysList() {
 }
 
 
-function updateMemoText() {
-    const contactDropdown = document.getElementById('ContactDropdown');
-    const eventDropdown = document.getElementById('EventDropdown');
+function initializeMemoText(){
+    const memoTextElement = document.getElementById('MemoText');
+    memoTextElement.innerHTML = DEFAULT_MEMO_TEXT;
+}
 
+
+function updateMemoText(sharedMemoBuilder) {
     const memoTextElement = document.getElementById('MemoText');
 
-    console.log(`Updating memo text with contactKey: ${contactDropdown.value}, eventKey: ${eventDropdown.value}, contextKeys: ${getCheckedContextKeysList()}`);
-    memo_builder.contactKey = contactDropdown.value !== '' ? parseInt(contactDropdown.value) : null;
-    memo_builder.eventKey = eventDropdown.value !== '' ? parseInt(eventDropdown.value) : null;
-    let contextKeysList = getCheckedContextKeysList().map(key => parseInt(key));
-    memo_builder.contextKeys = contextKeysList;
-
-    memoTextElement.innerHTML = memo_builder.memo;  // applying changes to the memo text element
+    let newMemoText = sharedMemoBuilder.memo || DEFAULT_MEMO_TEXT;  // get the current memo text from the builder
+    memoTextElement.innerHTML = newMemoText;  // applying changes to the memo text element
 
    console.log(`Updated memo text: ${memoTextElement.innerHTML}`);
 
 }
 
-export { updateMemoText };
+export { updateMemoText, initializeMemoText };

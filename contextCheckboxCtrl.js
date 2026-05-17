@@ -91,9 +91,9 @@ function populateContextFieldset(contactKey) {
         }
 }
 
-function updateMemoBuilder(sharedMemoBuilder) {
+function updateSharedMemoBuilder(sharedMemoBuilder) {
     sharedMemoBuilder.contextKeys = getCheckedContextKeysList();
-    console.log(`Updated MemoBuilder context keys: ${sharedMemoBuilder.contextKeys.join(", ")}`);
+    console.log(`Updated context keys in MemoBuilder.\ncurrent build: ${sharedMemoBuilder.memo}`);
 }
 
-export { populateContextFieldset, initializeContextFieldset, updateMemoBuilder, getCheckedContextKeysList, getContextList };
+export { populateContextFieldset, initializeContextFieldset, updateSharedMemoBuilder, getCheckedContextKeysList, getContextList };
