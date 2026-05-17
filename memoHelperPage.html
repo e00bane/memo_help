@@ -37,7 +37,7 @@
                 }
             });
 
-            document.querySelectorAll('button[data-copy-button]').forEach((button) => {
+            document.querySelectorAll('.callButton').forEach((button) => {
                 // Pass the event so the handler can use event.currentTarget and avoid clicks on child nodes
                 button.addEventListener('click', (e) => handleCopyButtonClick(e));
             });
@@ -71,14 +71,14 @@
     <!-- Buttons for copying memo text with different prefixes -->
     <div id="memoButtons">
         <div id="memoButtonsA">
-            <button name="Home1" class="button" id="h1CopyButton" data-copy-button value="H1">Home 1</button>
-            <button name="Other1" class="button" id="o1CopyButton" data-copy-button value="O1">Other 1</button>
-            <button name="Work1" class="button" id="w1CopyButton" data-copy-button value="W1">Work 1</button>
+            <button name="Home1" class="callButton" id="h1CopyButton" value="H1">Home 1</button>
+            <button name="Other1" class="callButton" id="o1CopyButton" value="O1">Other 1</button>
+            <button name="Work1" class="callButton" id="w1CopyButton" value="W1">Work 1</button>
         </div>
         <div id="memoButtonsB">
-            <button name="Home2" class="button" id="h2CopyButton" data-copy-button value="H2">Home 2</button>
-            <button name="Other2" class="button" id="o2CopyButton" data-copy-button value="O2">Other 2</button>
-            <button name="Work2" class="button" id="w2CopyButton" data-copy-button value="W2">Work 2</button>
+            <button name="Home2" class="callButton" id="h2CopyButton" value="H2">Home 2</button>
+            <button name="Other2" class="callButton" id="o2CopyButton" value="O2">Other 2</button>
+            <button name="Work2" class="callButton" id="w2CopyButton" value="W2">Work 2</button>
         </div>
     </div>
     <br>
