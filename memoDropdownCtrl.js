@@ -76,4 +76,17 @@ function appendToContactChangeHandler(handler) {
     contactDropdown.addEventListener('change', handler);
 }
 
-export { initializeDropdowns, appendToContactChangeHandler };
+
+function updateSharedMemoBuilder(sharedMemoBuilder) {
+    const contactDropdown = document.getElementById('ContactDropdown');
+    const selectedContact = parseInt(contactDropdown.value);
+    sharedMemoBuilder.contactKey = selectedContact !== '' ? selectedContact : null;
+    console.log(`Updated MemoBuilder contact key: ${sharedMemoBuilder.contactKey}`);
+
+    const eventDropdown = document.getElementById('EventDropdown');
+    const selectedEvent = parseInt(eventDropdown.value);
+    sharedMemoBuilder.eventKey = selectedEvent !== '' ? selectedEvent : null;
+    console.log(`Updated MemoBuilder event key: ${sharedMemoBuilder.eventKey}`);
+}
+
+export { initializeDropdowns, appendToContactChangeHandler, updateSharedMemoBuilder };
