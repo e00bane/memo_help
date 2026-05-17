@@ -24,6 +24,7 @@ function populateContactDropdown() {
 
     dropdown.addEventListener('change', function() {
         const selectedContact = this.value;
+        console.log(`Contact dropdown changed to ${selectedContact}. Updating event dropdown and context checkboxes accordingly.`);
         populateEventDropdown(selectedContact);
         promptCheckboxPopulate(selectedContact);
     });
@@ -69,4 +70,10 @@ function initializeDropdowns() {
 
 }
 
-export { initializeDropdowns };
+
+function appendToContactChangeHandler(handler) {
+    const contactDropdown = document.getElementById('ContactDropdown');
+    contactDropdown.addEventListener('change', handler);
+}
+
+export { initializeDropdowns, appendToContactChangeHandler };

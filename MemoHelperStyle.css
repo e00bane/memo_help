@@ -56,3 +56,13 @@ body{
     color: white;
     /* Added text color for better visibility */
 }
+
+#ContextFieldset {
+    margin: 5px;
+    padding: 5px;
+    font-size: 16px;
+    border: 1px solid #8DF5E4;
+    border-radius: 8px;
+    background-color: white;
+    width: 300px;
+}

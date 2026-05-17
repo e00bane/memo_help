@@ -2,7 +2,7 @@ import { MemoLibrary } from "./memoLibrary.js";
 
 
 function getDefaultFieldsetElement() {
-    const element = document.createElement('p');
+    const element = document.createElement('label');
     element.textContent = 'context fieldset';
     return element;
 }

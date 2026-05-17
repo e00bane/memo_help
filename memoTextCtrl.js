@@ -43,12 +43,15 @@ function updateMemoText() {
     const memoTextElement = document.getElementById('MemoText');
 
     console.log(`Updating memo text with contactKey: ${contactDropdown.value}, eventKey: ${eventDropdown.value}, contextKeys: ${getContextKeysList()}`);
-    if (contactDropdown.value) { memo_builder.contactKey = parseInt(contactDropdown.value); }
-    if (eventDropdown.value) { memo_builder.eventKey = parseInt(eventDropdown.value); }
+    memo_builder.contactKey = contactDropdown.value !== '' ? parseInt(contactDropdown.value) : null;
+    memo_builder.eventKey = eventDropdown.value !== '' ? parseInt(eventDropdown.value) : null;
     let contextKeysList = getContextKeysList().map(key => parseInt(key));
-    if (contextKeysList.length > 0) { memo_builder.contextKeys = contextKeysList; }
+    memo_builder.contextKeys = contextKeysList;
 
     memoTextElement.innerHTML = memo_builder.memo;  // applying changes to the memo text element
+
+   console.log(`Updated memo text: ${memoTextElement.innerHTML}`);
+
 }
 
 export { updateMemoText };
