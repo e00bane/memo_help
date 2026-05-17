@@ -30,4 +30,17 @@ export class MemoLibrary {
             3 : [1, 2, 3]  // TP
         };
     }
+
+    static callKeyExists(key) {
+        return key in MemoLibrary.CALL_TEXTS;
+    }
+    static contactKeyExists(key) {
+        return key in MemoLibrary.CONTACT_TEXTS;
+    }
+    static eventKeyExists(key) {
+        return key in MemoLibrary.EVENT_TEXTS;
+    }
+    static contextKeyExists(key) {
+        return key in MemoLibrary.CONTEXT_TEXTS;
+    }
 }

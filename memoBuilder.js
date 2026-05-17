@@ -49,12 +49,15 @@ export class MemoBuilder {
 
     // handling specific context key and list parameters to ensure they align with the selected contact's allowed contexts
     handleContextKeyParameter(key) {
-        let contextList = MemoLibrary.CONTACT_CONTEXT_LISTS[this.#contactKey] || [];
-        this.#contextKeys = contextList.includes(key) ? [key] : [];
+        const contextList = MemoLibrary.CONTACT_CONTEXT_LISTS[this.#contactKey] || [];
+        let newKeys = contextList.includes(key) ? [key] : [];
 
-        if (this.#contextKeys.length === 0) {
+        if (newKeys.length === 0 && newKeys != []) {
             console.warn(`Invalid context key ${key} for contact ${this.#contactKey}. Context key reset.`);
+            newKeys = [];
         }
+
+        this.#contextKeys = newKeys;
     }
     handleContextListParameter(key_list) {
         let contextList = MemoLibrary.CONTACT_CONTEXT_LISTS[this.#contactKey] || [];
@@ -62,9 +65,6 @@ export class MemoBuilder {
 
         if (this.#contextKeys.length != key_list.length) {
             console.warn(`Some context keys in ${key_list} are invalid for contact ${this.#contactKey}. Valid keys retained, invalid keys removed.`);
-        }
-        if (this.#contextKeys.length === 0) {
-            console.warn(`No valid context keys in ${key_list} for contact ${this.#contactKey}. Context key reset.`);
         }
     }
 

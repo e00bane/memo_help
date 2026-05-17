@@ -9,10 +9,12 @@
         import { updateMemoText } from './memoTextCtrl.js';
         import { handleCopyButtonClick } from './copyBtnCtrl.js';
         import { initializeContextFieldset } from './contextCheckboxCtrl.js';
+        import { MemoBuilder } from './memoBuilder.js';
+
+        let pageMemoBuilder = new MemoBuilder();
 
 
         // setting listeners
-
         window.addEventListener('DOMContentLoaded', () => {
             initializeDropdowns();
             initializeContextFieldset();
