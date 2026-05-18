@@ -107,4 +107,4 @@ function updateSharedMemoBuilder(sharedMemoBuilder) {
     console.log(`Updated MemoBuilder's contact and event.\ncurrent build: ${sharedMemoBuilder.memo}`);
 }
 
-export { initializeDropdowns, appendToContactChangeHandler, updateSharedMemoBuilder };
+export { initializeDropdowns, updateSharedMemoBuilder };

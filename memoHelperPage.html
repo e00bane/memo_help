@@ -5,12 +5,10 @@
     <link rel="stylesheet" href="MemoHelperStyle.css">
 
     <script type="module">
-        import { initializeDropdowns } from './memoDropdownCtrl.js';
+        import { initializeDropdowns ,updateSharedMemoBuilder as dropdownUpdateMB } from './memoDropdownCtrl.js';
         import { updateMemoText, initializeMemoText } from './memoTextCtrl.js';
-        import { updateSharedMemoBuilder as contextUpdateMB} from './contextCheckboxCtrl.js';
-        import { updateSharedMemoBuilder as dropdownUpdateMB} from './memoDropdownCtrl.js';
         import { handleCopyButtonClick } from './copyBtnCtrl.js';
-        import { initializeContextFieldset } from './contextCheckboxCtrl.js';
+        import { initializeContextFieldset, updateSharedMemoBuilder as contextUpdateMB } from './contextCheckboxCtrl.js';
         import { MemoBuilder } from './memoBuilder.js';
 
         let sharedMemoBuilder = new MemoBuilder();

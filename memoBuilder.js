@@ -98,5 +98,4 @@ export class MemoBuilder {
 
         return `${callText} ${contactText} ${eventText} ${contextText}`.trim();
     }
-
 }
