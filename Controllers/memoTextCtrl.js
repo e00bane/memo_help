@@ -1,5 +1,5 @@
-import { MemoBuilder } from './memoBuilder.js';
-import { MemoLibrary } from './memoLibrary.js';
+import { MemoBuilder } from '../Entities/memoBuilder.js';
+import { MemoLibrary } from '../Entities/memoLibrary.js';
 
 let memo_builder = new MemoBuilder();
 

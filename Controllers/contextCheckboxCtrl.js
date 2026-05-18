@@ -1,5 +1,5 @@
-import { MemoLibrary } from "./memoLibrary.js";
-import { MemoBuilder } from "./memoBuilder.js";
+import { MemoLibrary } from "../Entities/memoLibrary.js";
+import { MemoBuilder } from "../Entities/memoBuilder.js";
 
 
 function getDefaultFieldsetElement() {

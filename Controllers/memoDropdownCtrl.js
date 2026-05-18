@@ -1,5 +1,5 @@
-import { MemoLibrary } from './memoLibrary.js';
-import { promptCheckboxPopulate } from './dropdownChechboxCtrlInterface.js';
+import { MemoLibrary } from '../Entities/memoLibrary.js';
+import { promptCheckboxPopulate } from '../dropdownChechboxCtrlInterface.js';
 
 
 function getDefaultDDElement() {
