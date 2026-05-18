@@ -28,7 +28,10 @@ export class MemoLibrary {
     static get CONTACT_CONTEXT_LISTS() {
         return {
             0 : [0],  // CM
+            1 : [],  // NC
+            2 : [],  // SPS
             3 : [1, 2, 3],  // TP
+            4 : [],  // VM
             5 : [0]  // ATP
         };
     }
