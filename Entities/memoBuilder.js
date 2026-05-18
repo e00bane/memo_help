@@ -98,4 +98,13 @@ export class MemoBuilder {
 
         return `${callText} ${contactText} ${eventText} ${contextText}`.trim();
     }
+
+    getMemoObject() {
+        return {
+            callKey: this.#callKey,
+            contactKey: this.#contactKey,
+            eventKey: this.#eventKey,
+            contextKeys: this.#contextKeys
+        };
+    }
 }

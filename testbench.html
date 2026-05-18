@@ -13,31 +13,21 @@
     </style>
 
     <script type="module">
-        import {populateContextFieldset} from './Controllers/contextCheckboxCtrl.js';
-        import {MemoBuilder} from './Entities/MemoBuilder.js';
-        let memo_builder = new MemoBuilder();
-        memo_builder.callKey = 3;
-        memo_builder.contactKey = 3;
-        memo_builder.eventKey = 1;
-        memo_builder.contextKeys = [1, 3];
+        import {Clock } from './Entities/Clock.js';
 
-        // Initialize the checkboxes when the page loads
-        document.addEventListener('DOMContentLoaded', () => {
-            populateContextFieldset(3); // Example: populate with context options for the first contact
-        });
+        console.log(Clock.getTimeObject());
+        let time = Clock.getTimeObject();
+        let clk = new Clock();
+
+        // wait 2 seconds and log again to see the time change
+        setTimeout(() => {
+            clk.restart();
+            console.log(clk.getTimeLapse());
+        }, 2000);
     </script>
 </head>
 
 <body>
-    <h1>GEEKSFORGEEKS</h1>
-
-    <h2>Use CheckBox inside Select Option</h2>
-
-    <p>Click the dropdown to see the checkboxes:</p>
-
-    <fieldset id="ContextFieldset" class="fieldset">
-        <legend>Context:</legend>
-    </fieldset>
 </body>
 
 </html>
