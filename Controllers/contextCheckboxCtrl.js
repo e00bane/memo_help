@@ -1,4 +1,5 @@
-import { MemoLibrary } from "./memoLibrary.js";
+import { MemoLibrary } from "../Entities/memoLibrary.js";
+import { MemoBuilder } from "../Entities/memoBuilder.js";
 
 
 function getDefaultFieldsetElement() {
@@ -20,6 +21,21 @@ function getContextList(contactKey) {
     }
     console.log(`Retrieved context texts for contact ${contactKey}: ${contextTextsList.join(", ")}`);
     return contextTextsList;
+}
+
+function getCheckedContextKeysList() {
+    const contextFieldset = document.getElementById('ContextFieldset');
+    const checkboxes = contextFieldset.querySelectorAll('input[type="checkbox"]');
+    const selectedContextKeys = [];
+
+    checkboxes.forEach(checkbox => {
+        if (checkbox.checked) {
+            selectedContextKeys.push(parseInt(checkbox.value));
+        }
+    });
+
+    console.log(`Selected context keys: ${selectedContextKeys.join(", ")}`);
+    return selectedContextKeys;
 }
 
 function clearContextFieldset() {
@@ -75,4 +91,9 @@ function populateContextFieldset(contactKey) {
         }
 }
 
-export { populateContextFieldset, initializeContextFieldset };
+function updateSharedMemoBuilder(sharedMemoBuilder) {
+    sharedMemoBuilder.contextKeys = getCheckedContextKeysList();
+    console.log(`Updated context keys in MemoBuilder.\ncurrent build: ${sharedMemoBuilder.memo}`);
+}
+
+export { populateContextFieldset, initializeContextFieldset, updateSharedMemoBuilder, getCheckedContextKeysList, getContextList };

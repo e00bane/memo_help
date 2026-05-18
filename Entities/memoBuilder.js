@@ -20,21 +20,31 @@ export class MemoBuilder {
 
      // setters
     set callKey(key) {
-        this.#callKey = key;
+        if (key !== null && !MemoLibrary.CALL_TEXTS.hasOwnProperty(key)) {
+            console.warn(`Invalid call key ${key}. Call key reset.`);
+            this.#callKey = null;
+        } else {
+            this.#callKey = key;
+        }
     }
     set contactKey(key) {
-        this.#contactKey = key;
+        if (key !== null && !MemoLibrary.CONTACT_TEXTS.hasOwnProperty(key)) {
+            console.warn(`Invalid contact key ${key}. Contact key reset.`);
+            this.#contactKey = null;
+        } else {
+            this.#contactKey = key;
+        }
     }
     set eventKey(key) {
         let eventList = MemoLibrary.CONTACT_EVENT_LISTS[this.#contactKey] || [];
         this.#eventKey = eventList.includes(key) ? key : null;
 
-        if (this.#eventKey == null) {
+        if (this.#eventKey === null && key != null) {
             console.warn(`Invalid event key ${key} for contact ${this.#contactKey}. Event key reset.`);
         }
     }
     set contextKeys(param) {
-        if(this.#contactKey === null || param === null) {
+        if((this.#contactKey === null || param === null)) {
             this.#contextKeys = [];
             return;
         }
@@ -49,12 +59,15 @@ export class MemoBuilder {
 
     // handling specific context key and list parameters to ensure they align with the selected contact's allowed contexts
     handleContextKeyParameter(key) {
-        let contextList = MemoLibrary.CONTACT_CONTEXT_LISTS[this.#contactKey] || [];
-        this.#contextKeys = contextList.includes(key) ? [key] : [];
+        const contextList = MemoLibrary.CONTACT_CONTEXT_LISTS[this.#contactKey] || [];
+        let newKeys = contextList.includes(key) ? [key] : [];
 
-        if (this.#contextKeys.length === 0) {
+        if (newKeys.length === 0 && newKeys != []) {
             console.warn(`Invalid context key ${key} for contact ${this.#contactKey}. Context key reset.`);
+            newKeys = [];
         }
+
+        this.#contextKeys = newKeys;
     }
     handleContextListParameter(key_list) {
         let contextList = MemoLibrary.CONTACT_CONTEXT_LISTS[this.#contactKey] || [];
@@ -63,11 +76,20 @@ export class MemoBuilder {
         if (this.#contextKeys.length != key_list.length) {
             console.warn(`Some context keys in ${key_list} are invalid for contact ${this.#contactKey}. Valid keys retained, invalid keys removed.`);
         }
-        if (this.#contextKeys.length === 0) {
-            console.warn(`No valid context keys in ${key_list} for contact ${this.#contactKey}. Context key reset.`);
-        }
     }
 
+    get callKey() {
+        return this.#callKey;
+    }
+    get contactKey() {
+        return this.#contactKey;
+    }
+    get eventKey() {
+        return this.#eventKey;
+    }
+    get contextKeys() {
+        return this.#contextKeys;
+    }
     get memo() {
         const contactText = this.#contactKey !== null ? MemoLibrary.CONTACT_TEXTS[this.#contactKey] : '';
         const eventText = this.#eventKey !== null ? MemoLibrary.EVENT_TEXTS[this.#eventKey] : '';
@@ -76,5 +98,4 @@ export class MemoBuilder {
 
         return `${callText} ${contactText} ${eventText} ${contextText}`.trim();
     }
-
 }

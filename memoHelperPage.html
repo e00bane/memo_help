@@ -5,30 +5,37 @@
     <link rel="stylesheet" href="MemoHelperStyle.css">
 
     <script type="module">
-        import { initializeDropdowns } from './memoDropdownCtrl.js';
-        import { updateMemoText } from './memoTextCtrl.js';
-        import { handleCopyButtonClick } from './copyBtnCtrl.js';
-        import { initializeContextFieldset } from './contextCheckboxCtrl.js';
+        import { initializeDropdowns ,updateSharedMemoBuilder as dropdownUpdateMB } from './Controllers/memoDropdownCtrl.js';
+        import { updateMemoText, initializeMemoText } from './Controllers/memoTextCtrl.js';
+        import { handleCopyButtonClick } from './Controllers/copyBtnCtrl.js';
+        import { initializeContextFieldset, updateSharedMemoBuilder as contextUpdateMB } from './Controllers/contextCheckboxCtrl.js';
+        import { MemoBuilder } from './Entities/memoBuilder.js';
 
+
+        let sharedMemoBuilder = new MemoBuilder();
 
         // setting listeners
-
         window.addEventListener('DOMContentLoaded', () => {
             initializeDropdowns();
             initializeContextFieldset();
+            initializeMemoText();
 
             document.addEventListener('change', (e) => {
                 if (
-                    e.target && (
-                        ['ContactDropdown', 'EventDropdown'].includes(e.target.id) ||
-                        (e.target.matches('input[type="checkbox"]') && e.target.closest('#ContextFieldset'))
-                    )
+                    e.target && (['ContactDropdown', 'EventDropdown'].includes(e.target.id))
                 ) {
-                    updateMemoText();
+                    dropdownUpdateMB(sharedMemoBuilder);
+                    updateMemoText(sharedMemoBuilder);
+                }
+                if (
+                    e.target && ((e.target.matches('input[type="checkbox"]') && e.target.closest('#ContextFieldset')))
+                ) {
+                    contextUpdateMB(sharedMemoBuilder);
+                    updateMemoText(sharedMemoBuilder);
                 }
             });
 
-            document.querySelectorAll('button[data-copy-button]').forEach((button) => {
+            document.querySelectorAll('.callButton').forEach((button) => {
                 // Pass the event so the handler can use event.currentTarget and avoid clicks on child nodes
                 button.addEventListener('click', (e) => handleCopyButtonClick(e));
             });
@@ -38,15 +45,10 @@
 
 <body>
     <table id="HeaderTbl">
-        <td>
-            <img src="https://www.clipartmax.com/png/small/4-40964_man-computer-clipart-work-working-office-workplace-work-desk-icon.png" alt="Man Computer Clipart Work Working Office Workplace - Work Desk Icon @clipartmax.com">
-        </td>
-        <td>
-            <h1>Workplace Memo Helper</h1>
-        </td>
+        <td><img src="https://www.clipartmax.com/png/small/4-40964_man-computer-clipart-work-working-office-workplace-work-desk-icon.png" alt="Man Computer Clipart Work Working Office Workplace - Work Desk Icon @clipartmax.com"></td>
+        <td><h1>Workplace Memo Helper</h1></td>
     </table>
 
-        
     <!-- Dropdowns for Contact, Event, Context, and Call -->
     <div id="MemoConfigurationTools">
         <h3><span id="MemoText">Memo Text</span></h3>
@@ -55,21 +57,19 @@
         <select id="EventDropdown" class="MemoDropdown"></select>
     </div>
 
-    <fieldset id="ContextFieldset" class="fieldset">
-    </fieldset>
-
+    <fieldset id="ContextFieldset" class="fieldset"></fieldset>
 
     <!-- Buttons for copying memo text with different prefixes -->
     <div id="memoButtons">
         <div id="memoButtonsA">
-            <button name="Home1" class="button" id="h1CopyButton" data-copy-button value="H1">Home 1</button>
-            <button name="Other1" class="button" id="o1CopyButton" data-copy-button value="O1">Other 1</button>
-            <button name="Work1" class="button" id="w1CopyButton" data-copy-button value="W1">Work 1</button>
+            <button name="Home1" class="callButton" id="h1CopyButton" value="H1">Home 1</button>
+            <button name="Other1" class="callButton" id="o1CopyButton" value="O1">Other 1</button>
+            <button name="Work1" class="callButton" id="w1CopyButton" value="W1">Work 1</button>
         </div>
         <div id="memoButtonsB">
-            <button name="Home2" class="button" id="h2CopyButton" data-copy-button value="H2">Home 2</button>
-            <button name="Other2" class="button" id="o2CopyButton" data-copy-button value="O2">Other 2</button>
-            <button name="Work2" class="button" id="w2CopyButton" data-copy-button value="W2">Work 2</button>
+            <button name="Home2" class="callButton" id="h2CopyButton" value="H2">Home 2</button>
+            <button name="Other2" class="callButton" id="o2CopyButton" value="O2">Other 2</button>
+            <button name="Work2" class="callButton" id="w2CopyButton" value="W2">Work 2</button>
         </div>
     </div>
     <br>

@@ -1,4 +1,4 @@
-import { Clipboard } from "./Clipboard.js";
+import { Clipboard } from "../Entities/Clipboard.js";
 
 async function copyMemoText(callpoint_btn_element) {
 

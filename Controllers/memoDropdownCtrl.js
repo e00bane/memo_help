@@ -1,5 +1,7 @@
-import { MemoLibrary } from './memoLibrary.js';
-import { promptCheckboxPopulate } from './dropdownChechboxCtrlInterface.js';
+import { MemoLibrary } from '../Entities/memoLibrary.js';
+import { promptCheckboxPopulate } from '../dropdownChechboxCtrlInterface.js';
+
+
 function getDefaultDDElement() {
     const element = document.createElement('option');
     element.value = '';
@@ -7,6 +9,17 @@ function getDefaultDDElement() {
     return element;
 }
 
+function getSelectedContactKey() {
+    const dropdown = document.getElementById('ContactDropdown');
+    const selectedValue = dropdown.value;
+    return (selectedValue !== '' && selectedValue != null) ? parseInt(selectedValue) : null;
+}
+
+function getSelectedEventKey() {
+    const dropdown = document.getElementById('EventDropdown');
+    const selectedValue = dropdown.value;
+    return (selectedValue !== '' && selectedValue != null) ? parseInt(selectedValue) : null;
+}
 
 function populateContactDropdown() {
     const dropdown = document.getElementById('ContactDropdown');
@@ -67,7 +80,6 @@ function initializeDropdowns() {
     populateContactDropdown();
     
     initializeDropdown('EventDropdown');
-
 }
 
 
@@ -76,4 +88,23 @@ function appendToContactChangeHandler(handler) {
     contactDropdown.addEventListener('change', handler);
 }
 
-export { initializeDropdowns, appendToContactChangeHandler };
+
+function updateSharedMemoBuilder(sharedMemoBuilder) {
+    const selectedContact = getSelectedContactKey();
+    const selectedEvent = getSelectedEventKey();
+    
+    if(sharedMemoBuilder.contactKey != selectedContact) {  // if contact has changed, reset context keys in the MemoBuilder to prevent invalid contexts from being retained
+        console.log(`Resetting context keys in MemoBuilder; Contact selection changed from ${sharedMemoBuilder.contactKey} to ${selectedContact}.`);
+        sharedMemoBuilder.contextKeys = []; // reset context keys if contact changes
+    }
+
+    console.log(`Updating MemoBuilder's contact to ${selectedContact} based on dropdown selection.`);
+    sharedMemoBuilder.contactKey = selectedContact;
+
+    console.log(`Updating MemoBuilder's event to ${selectedEvent} based on dropdown selection.`);
+    sharedMemoBuilder.eventKey = selectedEvent;
+    
+    console.log(`Updated MemoBuilder's contact and event.\ncurrent build: ${sharedMemoBuilder.memo}`);
+}
+
+export { initializeDropdowns, updateSharedMemoBuilder };

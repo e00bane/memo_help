@@ -1,4 +1,4 @@
-import { populateContextFieldset } from "./contextCheckboxCtrl.js";
+import { populateContextFieldset } from "./Controllers/contextCheckboxCtrl.js";
 
 function promptCheckboxPopulate(contactKey) {
     populateContextFieldset(contactKey);
