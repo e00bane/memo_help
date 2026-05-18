@@ -4,7 +4,7 @@ export class MemoLibrary {
         return {0: 'H1', 1: 'H2', 2: 'O1', 3: 'O2', 4: 'W1', 5: 'W2'};
     }
     static get CONTACT_TEXTS() {
-        return {0: 'CM', 1: 'NC', 2: 'SPS', 3: 'TP', 4: 'VM'};
+        return {0: 'CM', 1: 'NC', 2: 'SPS', 3: 'TP', 4: 'VM', 5: 'ATP'};
     }
     static get EVENT_TEXTS() {
         return {0: 'DISC', 1: 'XFR', 2: 'NA', 3: 'SIT', 4: 'INCOMPLETE', 5: 'LM', 6: 'NML', 7: 'VMF', 8: 'VMNSU'};
@@ -20,14 +20,16 @@ export class MemoLibrary {
             1 : [2, 3, 4],  // NC
             2 : [0, 1, 5, 6],  // SPS
             3 : [1, 5, 6],  // TP
-            4 : [5, 6, 7, 8]  // VM
+            4 : [5, 6, 7, 8],  // VM
+            5 : [0, 1]  // ATP
         };
     }
 
     static get CONTACT_CONTEXT_LISTS() {
         return {
             0 : [0],  // CM
-            3 : [1, 2, 3]  // TP
+            3 : [1, 2, 3],  // TP
+            5 : [0]  // ATP
         };
     }
 
