@@ -11,8 +11,8 @@
         import { initializeContextFieldset, updateSharedMemoBuilder as contextUpdateMB } from './Controllers/contextCheckboxCtrl.js';
         import { MemoBuilder } from './Entities/memoBuilder.js';
 
-        let sharedMemoBuilder = new MemoBuilder();
 
+        let sharedMemoBuilder = new MemoBuilder();
 
         // setting listeners
         window.addEventListener('DOMContentLoaded', () => {
@@ -45,12 +45,8 @@
 
 <body>
     <table id="HeaderTbl">
-        <td>
-            <img src="https://www.clipartmax.com/png/small/4-40964_man-computer-clipart-work-working-office-workplace-work-desk-icon.png" alt="Man Computer Clipart Work Working Office Workplace - Work Desk Icon @clipartmax.com">
-        </td>
-        <td>
-            <h1>Workplace Memo Helper</h1>
-        </td>
+        <td><img src="https://www.clipartmax.com/png/small/4-40964_man-computer-clipart-work-working-office-workplace-work-desk-icon.png" alt="Man Computer Clipart Work Working Office Workplace - Work Desk Icon @clipartmax.com"></td>
+        <td><h1>Workplace Memo Helper</h1></td>
     </table>
 
         
@@ -62,9 +58,7 @@
         <select id="EventDropdown" class="MemoDropdown"></select>
     </div>
 
-    <fieldset id="ContextFieldset" class="fieldset">
-    </fieldset>
-
+    <fieldset id="ContextFieldset" class="fieldset"></fieldset>
 
     <!-- Buttons for copying memo text with different prefixes -->
     <div id="memoButtons">
